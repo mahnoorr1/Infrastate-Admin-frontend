@@ -13,10 +13,12 @@ export default function Sidebar(props) {
   var items = [
     'Dashboard',
     'Tracker',
+    'Support'
   ];
   var pages = [
     'Dashboard',
     'Tracker',
+    'Support',
   ];
   var icons = [
     'bx bx-grid-alt nav_icon',
