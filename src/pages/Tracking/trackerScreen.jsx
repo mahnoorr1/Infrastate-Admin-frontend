@@ -8,7 +8,7 @@ import ChartLine from '../../components/Charts/lineChart';
 import TrackerImageCard from './Components/trackedImageCard';
 import NotificationList from './Components/notificationList';
 import show_more_globe from '../../assets/show_more_globe.png';
-import { Card, Container, Paper, Typography } from '@mui/material';
+import { Card, Container, Paper, Typography, Button } from '@mui/material';
 import StaticAerialMap from '../../components/Maps/staticAerialMap';
 import HoverZoom from '../../components/CustomComponents/onhoverZoom';
 import {MainContainer} from "../../components/Contents/Contents.elements";
@@ -202,6 +202,8 @@ export const TrackerScreen = (props) => {
                             margin: '0.9%',
                             padding: '10px',
                             backgroundColor: 'transparent',
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
                         }}>
                             <Typography 
                             variant='subheading1' 
@@ -209,6 +211,11 @@ export const TrackerScreen = (props) => {
                             color={theme.palette.shades.greenDark}>
                                 Active Trackers Details
                             </Typography>
+                            <AppButton 
+                            variant={'text'} 
+                            text={'view all'} 
+                            onClick={()=>{navigate('/Tracker/allTrackers')}}
+                            ></AppButton>
                         </Card>
                         <Container
                             sx={{

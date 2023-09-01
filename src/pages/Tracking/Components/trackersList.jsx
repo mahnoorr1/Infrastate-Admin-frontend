@@ -2,52 +2,8 @@ import { Card } from "@mui/material";
 import React, { useState } from 'react';
 import theme from "../../../configs/theme";
 import { TrackerListItem } from "./trackerListItem";
+import { Trackers } from "../../../configs/defaultData";
 import TopNavBar from "../../../components/CustomComponents/simpleNavBar";
-
-const Trackers = [
-    {
-        id: 'Z1-0001',
-        location: 'Islamabad',
-        zone: 'zone 1',
-        sector: 'f6',
-        lastUpdated: '10/8/2023',
-    },
-    {
-        id: 'Z2-0002',
-        location: 'Islamabad',
-        zone: 'zone 2',
-        sector: 'f6',
-        lastUpdated: '10/8/2023',
-    },
-    {
-        id: 'Z4-0003',
-        location: 'Islamabad',
-        zone: 'zone 4',
-        sector: 'f6',
-        lastUpdated: '10/8/2023',
-    },
-    {
-        id: 'Z5-0004',
-        location: 'Islamabad',
-        zone: 'zone 5',
-        sector: 'f6',
-        lastUpdated: '10/8/2023',
-    },
-    {
-        id: 'Z3-0005',
-        location: 'Islamabad',
-        zone: 'zone 3',
-        sector: 'f6',
-        lastUpdated: '10/8/2023',
-    },
-    {
-        id: 'Z1-0006',
-        location: 'Islamabad',
-        zone: 'zone 1',
-        sector: 'f6',
-        lastUpdated: '10/8/2023',
-    },
-];
 
 const categories = ['All', 'Restrictive', 'Allowed']
 const TrackersList = () => {

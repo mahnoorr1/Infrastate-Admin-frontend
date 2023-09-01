@@ -3,10 +3,9 @@ import { Routes, Route, Link } from 'react-router-dom';
 
 import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
-
-import Dashboard from '../pages/Dashboard/dashboard';
 import TrackerScreen from '../pages/Tracking/trackerScreen';
 import AddTracker from '../pages/Tracking/addTracker';
+import AllTrackers from '../pages/Tracking/allTrackersScreen';
 export const TrackerRoutes = () => {
   const [sidebarToggle, setSidebarToggle] = useState(true);
   const [activeClick, setActiveClick] = useState(false);
@@ -27,6 +26,12 @@ export const TrackerRoutes = () => {
           exact
           path="/addTracker"
           element={<AddTracker/>}
+        />
+
+        <Route
+          exact
+          path="/allTrackers"
+          element={<AllTrackers/>}
         />
         
       </Routes>
