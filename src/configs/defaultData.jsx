@@ -128,3 +128,62 @@ export const Trackers = [
         validity: '20/10/2024',
     },
 ];
+
+export const supportAlerts = [
+    {
+        sender: 'user1023',
+        userEmail: 'user@gmail.com',
+        description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
+        date: '20/10/2023',
+        subject: 'Construction plan problem',
+        type: 'report',
+    },
+    {
+        sender: 'user1023',
+        userEmail: 'user@gmail.com',
+        description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
+        date: '20/10/2023',
+        subject: 'Construction plan problem',
+        type: 'feedback',
+    },
+    {
+        sender: 'user1023',
+        userEmail: 'user@gmail.com',
+        description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
+        date: '20/10/2023',
+        subject: 'Construction plan problem',
+        type: 'report',
+    },
+    {
+        sender: 'user1023',
+        userEmail: 'user@gmail.com',
+        description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
+        date: '20/10/2023',
+        subject: 'Construction plan problem',
+        type: 'feedback',
+    },
+    {
+        sender: 'user1023',
+        userEmail: 'user@gmail.com',
+        description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
+        date: '20/10/2023',
+        subject: 'Construction plan problem',
+        type: 'report',
+    },
+    {
+        sender: 'user1023',
+        userEmail: 'user@gmail.com',
+        description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
+        date: '20/10/2023',
+        subject: 'Construction plan problem',
+        type: 'feedback',
+    },
+    {
+        sender: 'user1023',
+        userEmail: 'user@gmail.com',
+        description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
+        date: '20/10/2023',
+        subject: 'Construction plan problem',
+        type: 'feedback',
+    },
+];
