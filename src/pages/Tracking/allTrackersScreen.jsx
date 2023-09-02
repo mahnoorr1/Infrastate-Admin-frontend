@@ -26,7 +26,7 @@ const AllTrackers = () => {
         <MainContainer>
             <TopNavBar categories={categories} onCategoryChange={handleCategoryChange}></TopNavBar>
             <Card sx={{
-                width: '90%',
+                width: '95%',
                 margin: '10px',
                 padding: '10px',
                 backgroundColor: 'transparent',
