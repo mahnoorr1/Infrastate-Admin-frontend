@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { Card, CardMedia, Typography } from "@mui/material";
 import emptyMail from '../../assets/emptyMail.png';
 import { MainContainer } from "../../components/Contents/Contents.elements";
 import ReportsAndFeedbackList from "./Components/reportsFeedsList";
+import { SupportNotificationContext } from '../../context/supportNotifContext';
 
 const HelpAndSupport = (props) => {
-    const [replyAlert, setReplyAlert] = useState(null);
+    const {notification, updateSelectedNotification} = useContext(SupportNotificationContext);
     return(
         <MainContainer active = {props.toggle}>
             <Card sx={{
@@ -29,7 +30,7 @@ const HelpAndSupport = (props) => {
                         justifyContent: 'center',
                     }}>
                         {
-                            replyAlert == null ? 
+                            notification == '' ? 
                             <Card sx={{
                                 border: 'none',
                                 boxShadow: 'none',
@@ -55,7 +56,7 @@ const HelpAndSupport = (props) => {
                         border: 'none',
                         boxShadow: 'none',
                     }}>
-                        <ReportsAndFeedbackList alertToReply={setReplyAlert}></ReportsAndFeedbackList>
+                        <ReportsAndFeedbackList></ReportsAndFeedbackList>
                     </Card>
                 </Card>
             </Card>

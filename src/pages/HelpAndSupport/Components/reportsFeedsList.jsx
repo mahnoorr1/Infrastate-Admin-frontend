@@ -1,17 +1,19 @@
 import AlertCard from './alertCard';
+import { useContext } from 'react';
 import { Card, Typography } from "@mui/material";
 import React, {useState} from 'react';
 import emptyMailBox from '../../../assets/emptyMailBox.png'
 import { supportAlerts } from '../../../configs/defaultData';
+import { SupportNotificationContext } from '../../../context/supportNotifContext';
 import TopNavBar from "../../../components/CustomComponents/simpleNavBar";
 
 const categories = ['Reports', 'Feedbacks'];
 const reports = supportAlerts.filter((alert) => alert.type == 'report');
 const feedbacks = supportAlerts.filter((alert) => alert.type == 'feedback');
 
-const ReportsAndFeedbackList = ({alertToReply}) => {
+const ReportsAndFeedbackList = () => {
     const [data, setData] = useState(reports);
-    const [selectedAlert, setSelectedAlert] = useState(null);
+    const {notification, updateSelectedNotification} = useContext(SupportNotificationContext);
 
     const handleCategoryChange = (newCategory) => {
         if(newCategory === 'Reports'){
@@ -21,8 +23,7 @@ const ReportsAndFeedbackList = ({alertToReply}) => {
         }
     }
     const handleAlertClick = (alert) => {
-        setSelectedAlert(alert);
-        alertToReply(selectedAlert);
+        updateSelectedNotification(alert);
     };
 
     return(

@@ -137,6 +137,7 @@ export const supportAlerts = [
         date: '20/10/2023',
         subject: 'Construction plan problem',
         type: 'report',
+        rating: 3,
     },
     {
         sender: 'user1023',
@@ -145,6 +146,7 @@ export const supportAlerts = [
         date: '20/10/2023',
         subject: 'Construction plan problem',
         type: 'feedback',
+        rating: 4,
     },
     {
         sender: 'user1023',
@@ -153,6 +155,7 @@ export const supportAlerts = [
         date: '20/10/2023',
         subject: 'Construction plan problem',
         type: 'report',
+        rating: 5,
     },
     {
         sender: 'user1023',
@@ -161,6 +164,7 @@ export const supportAlerts = [
         date: '20/10/2023',
         subject: 'Construction plan problem',
         type: 'feedback',
+        rating: 3.5,
     },
     {
         sender: 'user1023',
@@ -169,6 +173,7 @@ export const supportAlerts = [
         date: '20/10/2023',
         subject: 'Construction plan problem',
         type: 'report',
+        rating: 4,
     },
     {
         sender: 'user1023',
@@ -177,6 +182,7 @@ export const supportAlerts = [
         date: '20/10/2023',
         subject: 'Construction plan problem',
         type: 'feedback',
+        rating: 3.5,
     },
     {
         sender: 'user1023',
@@ -185,5 +191,6 @@ export const supportAlerts = [
         date: '20/10/2023',
         subject: 'Construction plan problem',
         type: 'feedback',
+        rating: 5,
     },
 ];
