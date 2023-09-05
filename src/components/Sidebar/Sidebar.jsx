@@ -13,11 +13,13 @@ export default function Sidebar(props) {
   var items = [
     'Dashboard',
     'Tracker',
-    'Support'
+    'Rules',
+    'Support',
   ];
   var pages = [
     'Dashboard',
     'Tracker',
+    'Rules',
     'Support',
   ];
   var icons = [
