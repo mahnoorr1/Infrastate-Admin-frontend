@@ -25,6 +25,7 @@ const theme = createTheme({
           red: '#D70040',
           greyLine: '#E8E8E8',
           greyColor: '#F8F8F8',
+          greyText: '#686868',
         }
       },
       typography: {

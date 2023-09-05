@@ -131,6 +131,7 @@ export const Trackers = [
 
 export const supportAlerts = [
     {
+        ticketNo: 1,
         sender: 'user1023',
         userEmail: 'user@gmail.com',
         description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
@@ -140,6 +141,7 @@ export const supportAlerts = [
         rating: 3,
     },
     {
+        ticketNo: 2,
         sender: 'user1023',
         userEmail: 'user@gmail.com',
         description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
@@ -149,6 +151,7 @@ export const supportAlerts = [
         rating: 4,
     },
     {
+        ticketNo: 3,
         sender: 'user1023',
         userEmail: 'user@gmail.com',
         description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
@@ -158,6 +161,7 @@ export const supportAlerts = [
         rating: 5,
     },
     {
+        ticketNo: 4,
         sender: 'user1023',
         userEmail: 'user@gmail.com',
         description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
@@ -167,6 +171,7 @@ export const supportAlerts = [
         rating: 3.5,
     },
     {
+        ticketNo: 5,
         sender: 'user1023',
         userEmail: 'user@gmail.com',
         description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
@@ -176,6 +181,7 @@ export const supportAlerts = [
         rating: 4,
     },
     {
+        ticketNo: 6,
         sender: 'user1023',
         userEmail: 'user@gmail.com',
         description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
@@ -185,12 +191,30 @@ export const supportAlerts = [
         rating: 3.5,
     },
     {
+        ticketNo: 7,
         sender: 'user1023',
         userEmail: 'user@gmail.com',
-        description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
+        description: 'I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it. I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it. I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it. I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.I have been facing problem in accessing my credits for generating construction plan decription, kindly fix it.',
         date: '20/10/2023',
         subject: 'Construction plan problem',
         type: 'feedback',
         rating: 5,
     },
 ];
+
+export const feedbackReply = "Respected Customer, Thanks for you valuable Response. We care about your user experience and try our best to provide valuable services. We'll be happy to receive more feedbacks or assist you with any issue that you may face. We hope you have a great experience next time as well."
+
+export const sampleParagraph =
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nec odio non nisl aliquam efficitur. Quisque a sapien at justo fringilla tincidunt. " +
+"In hac habitasse platea dictumst. Nunc hendrerit justo ut vehicula. Nulla facilisi. Duis eget justo sit amet mi rhoncus luctus. " +
+"Maecenas eleifend bibendum purus, a congue tortor facilisis sed. Nulla facilisi. Vivamus lacinia, purus ac vestibulum fermentum, " +
+"velit purus luctus felis, nec congue augue felis id nisi. Cras nec sapien in neque gravida fermentum. Nulla facilisi. " +
+"Pellentesque euismod tincidunt feugiat. Praesent facilisis purus in mauris vestibulum, eu pellentesque elit hendrerit.\n" +
+
+"Curabitur eget odio ac turpis fringilla efficitur nec vel justo. Ut at luctus lectus. Suspendisse bibendum arcu vel magna tristique, " +
+"id facilisis libero laoreet. Nunc eu vehicula tortor, a vehicula sapien. Phasellus semper risus id purus malesuada, " +
+"eget suscipit libero auctor. Nulla facilisi. Etiam congue erat et nisi lacinia, id auctor ante ultrices. " +
+"Praesent vehicula est vitae neque facilisis, a accumsan odio semper. Quisque nec felis vel arcu fermentum bibendum. " +
+"In hac habitasse platea dictumst. Integer varius, enim at suscipit aliquam, ligula elit bibendum quam, " +
+"at cursus odio nunc ac justo. Vivamus rhoncus elit at sapien tempor, eu scelerisque libero tincidunt. " +
+"Duis euismod nunc nec purus venenatis, et hendrerit arcu hendrerit.";
