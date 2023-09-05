@@ -1,10 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-
-import { DashboardRoutes } from './DashboardRoutes';
+import { RulesRoutes } from './RulesRoutes';
 import { TrackerRoutes } from './TrackerRoutes';
 import { SupportRoutes } from './SupportRoutes';
-import { RulesRoutes } from './RulesRoutes';
+import { DashboardRoutes } from './DashboardRoutes';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { UsersRoutes } from './UsersRoutes';
 export const AppRouter = () => {
   return (
     <BrowserRouter>
@@ -14,6 +14,7 @@ export const AppRouter = () => {
         <Route path="/Tracker/*" element={<TrackerRoutes/>} />
         <Route path="/Support/*" element={<SupportRoutes/>}/>
         <Route path="/Rules/*" element={<RulesRoutes/>}/>
+        <Route path="/*" element={<UsersRoutes/>}/>
       </Routes>
     </BrowserRouter>
   );

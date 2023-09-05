@@ -14,12 +14,14 @@ export default function Sidebar(props) {
     'Dashboard',
     'Tracker',
     'Rules',
+    'Users',
     'Support',
   ];
   var pages = [
     'Dashboard',
     'Tracker',
     'Rules',
+    'Users',
     'Support',
   ];
   var icons = [
