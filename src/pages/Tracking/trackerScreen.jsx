@@ -53,19 +53,6 @@ export const TrackerScreen = (props) => {
             <Paper sx = {{
                 width: '100%',
                 backgroundColor: 'transparent',
-                // display: {
-                //     xs: 'flex',
-                //     md: 'grid',
-                // },
-                // gridTemplateColumns: {
-                //     xs: "1fr", // Single column for small screens
-                //     md: "1fr 1fr", // Two columns for larger screens
-                //   },
-                // gap: '10px',
-                // flexDirection: {
-                //     xs: 'column-reverse',
-                //     md: 'row',
-                // },
                 border: 'none',
                 boxShadow: 'none',
             }}>
@@ -129,8 +116,6 @@ export const TrackerScreen = (props) => {
                                         })
                                     }
                                 </Paper>
-                            {/* <HoverGradientCard>
-                                { */}
                                 <HoverZoom>
                                     <img src = {show_more_globe}
                                     alt='view more'
@@ -139,8 +124,6 @@ export const TrackerScreen = (props) => {
                                     style={{marginBottom: '30px'}}
                                     ></img>
                                 </HoverZoom>
-                                {/* }
-                            </HoverGradientCard> */}
                         </Paper>
                         
                     </Card>
