@@ -8,13 +8,13 @@ export const MainContainer = styled.div`
   padding: ${(props) =>
     !props.active ? '200px' : 'calc(var(--nav-width))'};
   transition: 2s;
-  padding-top: calc(var(--header-height));
-  padding-left: 190px;
-  padding-right: 20px;
+  padding-top: 20px;
+  padding-left: 205px;
+  padding-right: 10px;
   @media only screen and (max-width: 768px) {
 
     padding: ${(props) => (props.active ? '0px' : '78px')};
-    padding-top: 50px;
+    padding-top: 20px;
   
   }
 `;

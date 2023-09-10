@@ -16,7 +16,7 @@ export const SidebarContainer = styled.div`
   @media only screen and (min-width: 768px) {
     padding: 1rem 1rem 0 0;
     background-color: #0A323D;
-    width: ${(props) => (!props.act ? '280px' : '170px')};
+    width: ${(props) => (!props.act ? '280px' : '190px')};
     margin: 5px;
     border-radius: 20px;
   }

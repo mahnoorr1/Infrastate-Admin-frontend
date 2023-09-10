@@ -14,7 +14,7 @@ export const AppRouter = () => {
         <Route path="/Tracker/*" element={<TrackerRoutes/>} />
         <Route path="/Support/*" element={<SupportRoutes/>}/>
         <Route path="/Rules/*" element={<RulesRoutes/>}/>
-        <Route path="/*" element={<UsersRoutes/>}/>
+        <Route path="/users/*" element={<UsersRoutes/>}/>
       </Routes>
     </BrowserRouter>
   );

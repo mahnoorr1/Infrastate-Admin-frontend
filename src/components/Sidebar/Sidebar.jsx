@@ -1,45 +1,67 @@
-import {
-  SidebarContainer,
-  SidebarMenuContainer,
-  StyledNavLink,
-  LogoContainer,
-  LogoOut,
-} from './Sidebar.elements';
-
+import React, { useState } from 'react';
+import { SidebarContainer, SidebarMenuContainer, StyledNavLink, LogoContainer, LogoOut } from './Sidebar.elements';
 import { useNavigate } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+
+const sidebarData = [
+  {
+    title: 'Dashboard',
+    path: '/Dashboard',
+    icon: 'bx bx-grid-alt nav_icon',
+  },
+  {
+    title: 'Tracker',
+    path: '/tracker',
+    icon: 'bx bx-user nav_icon',
+  },
+  {
+    title: 'Rules',
+    path: '/rules',
+    icon: 'bx bx-ruler nav_icon',
+  },
+  {
+    title: 'Manage Users',
+    icon: 'bx bx-user-plus nav_icon',
+    subNav: [
+      {
+        title: 'Users',
+        path: '/users/manageUsers',
+        icon: 'bx bx-user nav_icon',
+      },
+      {
+        title: 'Admins',
+        path: '/users/manageAdmins',
+        icon: 'bx bx-user-check nav_icon',
+      },
+    ],
+  },
+  {
+    title: 'Support',
+    path: '/support',
+    icon: 'bx bx-support nav_icon',
+  },
+];
 
 export default function Sidebar(props) {
-  var items = [
-    'Dashboard',
-    'Tracker',
-    'Rules',
-    'Users',
-    'Support',
-  ];
-  var pages = [
-    'Dashboard',
-    'Tracker',
-    'Rules',
-    'Users',
-    'Support',
-  ];
-  var icons = [
-    'bx bx-grid-alt nav_icon',
-    'bx bx-user nav_icon',
-  ];
+
   const [isActive, setActive] = useState(null);
+  const [activeSubMenu, setActiveSubMenu] = useState(null);
 
   const toggleClass = (index) => {
     setActive(index);
   };
-  const navigate = useNavigate();
-  const logout = () => {
-      navigate('/auth'),
-        {
-          replace: true,
-        };
+
+  const toggleSubMenu = (index) => {
+    setActiveSubMenu(activeSubMenu === index ? null : index);
   };
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    navigate('/auth', {
+      replace: true,
+    });
+  };
+
   return (
     <SidebarContainer act={props.toggle}>
       <SidebarMenuContainer>
@@ -48,24 +70,59 @@ export default function Sidebar(props) {
             <i className="bx bx-layer nav_logo-icon"> Infrastate</i>
           </LogoContainer>
 
-          {items.map(function (item, index) {
-            var strClass = '';
-            if (isActive == index) {
-              console.log(index);
-              strClass = 'active';
-            } else {
-              strClass = 'Noactive';
-            }
+          {sidebarData.map((item, index) => {
+            const strClass = isActive === index ? 'active' : 'Noactive';
+
             return (
-              <StyledNavLink
-                to={'/' + pages[index]}
-                className={strClass}
-                key={index}
-                onClick={() => toggleClass(index)}
-              >
-                <i className={icons[index]} />
-                <span>{item}</span>
-              </StyledNavLink>
+              <div key={index}>
+                {item.subNav ? (
+                  // Render submenu with toggle
+                  <StyledNavLink
+                    to="#"
+                    className={strClass}
+                    onClick={() => toggleSubMenu(index)}
+                  >
+                    <i className={item.icon} />
+                    <span style={{ fontWeight: 'bold', fontSize: '18px' }}>
+                      {item.title}
+                    </span>
+                    <i
+                      className={`bx ${
+                        activeSubMenu === index
+                          ? 'bx-caret-up'
+                          : 'bx-caret-right'
+                      } nav_icon`}
+                    />
+                  </StyledNavLink>
+                ) : (
+                  // Render regular link
+                  <StyledNavLink
+                    to={item.path}
+                    className={strClass}
+                    onClick={() => toggleClass(index)}
+                  >
+                    <i className={item.icon} />
+                    <span>{item.title}</span>
+                  </StyledNavLink>
+                )}
+                {activeSubMenu === index && item.subNav && (
+                  // Render subnav links when submenu is open
+                  <div style={{ marginLeft: '10px' }}>
+                    {item.subNav.map((subItem, subIndex) => (
+                      <StyledNavLink
+                        to={subItem.path}
+                        key={subIndex}
+                        className={strClass}
+                      >
+                        <i className={subItem.icon} />
+                        <span style={{ fontSize: '16px' }}>
+                          {subItem.title}
+                        </span>
+                      </StyledNavLink>
+                    ))}
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
