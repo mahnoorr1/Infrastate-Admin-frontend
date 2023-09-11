@@ -67,18 +67,8 @@ export const LogoContainer = styled(StyledNavLink)`
 
   margin: -7px;
   margin-left: 0px;
-  i:hover {
-    margin-left: -7px;
-    transition: 0.1s;
-    font-size: 2rem;
-  }
-  i {
-    font-size: 2rem;
-    margin-left: -7px;
-  }
   img {
-    width:60px;
-    height:60px;
+    width:100px;
  
   }
 

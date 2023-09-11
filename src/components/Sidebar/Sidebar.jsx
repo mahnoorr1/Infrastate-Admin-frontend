@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import appLogo from '../../assets/appLogo.png';
 import { SidebarContainer, SidebarMenuContainer, StyledNavLink, LogoContainer, LogoOut } from './Sidebar.elements';
 import { useNavigate } from 'react-router-dom';
 
@@ -72,7 +73,9 @@ export default function Sidebar(props) {
       <SidebarMenuContainer>
         <div>
           <LogoContainer id="item" to="/">
-            <i className="bx bx-layer nav_logo-icon"> Infrastate</i>
+            <img style = {{
+              width: '150px'
+            }}src={appLogo}></img>
           </LogoContainer>
 
           {sidebarData.map((item, index) => {
