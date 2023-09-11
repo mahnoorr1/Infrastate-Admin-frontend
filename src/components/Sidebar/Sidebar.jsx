@@ -35,6 +35,11 @@ const sidebarData = [
     ],
   },
   {
+    title: 'Subscriptions',
+    path: '/subscriptions',
+    icon: 'bx bx-user-plus nav_icon',
+  },
+  {
     title: 'Support',
     path: '/support',
     icon: 'bx bx-support nav_icon',
