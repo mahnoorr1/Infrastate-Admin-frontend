@@ -218,3 +218,96 @@ export const sampleParagraph =
 "In hac habitasse platea dictumst. Integer varius, enim at suscipit aliquam, ligula elit bibendum quam, " +
 "at cursus odio nunc ac justo. Vivamus rhoncus elit at sapien tempor, eu scelerisque libero tincidunt. " +
 "Duis euismod nunc nec purus venenatis, et hendrerit arcu hendrerit.";
+
+export const subscriptions = [
+    {
+        price: 50,
+        name: 'Basic',
+        duration: 4, //in weeks
+        projects: 5,
+        construction: true,
+        roads: false,
+        support: 1,
+        routesAccess: true,
+        rulesAccess: true,
+    },
+    {
+        price: 100,
+        name: 'Standard',
+        duration: 4,
+        projects: 5,
+        construction: true,
+        roads: true,
+        support: 5,
+        routesAccess: true,
+        rulesAccess: true,  
+    },
+    {
+        price: 150,
+        name: 'Premium',
+        duration: 16,
+        projects: 10,
+        construction: true,
+        roads: true,
+        support: 10,
+        routesAccess: true,
+        rulesAccess: true,
+    },
+];
+
+export const demoUsers = [
+    {
+        id: 'U12321',
+        name: 'mahnoor',
+        organization: 'comsats',
+        plan: 'Basic',
+    },
+    {
+        id: 'U12322',
+        name: 'shahnoor',
+        organization: 'comsats',
+        plan: 'Standard',
+    },
+    {
+        id: 'U12323',
+        name: 'hafiz',
+        organization: 'comsats',
+        plan: 'Basic',
+    },
+    {
+        id: 'U12324',
+        name: 'zaid',
+        organization: 'comsats',
+        plan: 'Premium',
+    },
+    {
+        id: 'U12325',
+        name: 'khan',
+        organization: 'comsats',
+        plan: 'Basic',
+    },
+    {
+        id: 'U12326',
+        name: 'khansa',
+        organization: 'comsats',
+        plan: 'Standard',
+    },
+    {
+        id: 'U12327',
+        name: 'junaid',
+        organization: 'comsats',
+        plan: 'Premium',
+    },
+    {
+        id: 'U12328',
+        name: 'lahori',
+        organization: 'comsats',
+        plan: 'Basic',
+    },
+    {
+        id: 'U12329',
+        name: 'akhtar',
+        organization: 'comsats',
+        plan: 'Standard',
+    },
+];
