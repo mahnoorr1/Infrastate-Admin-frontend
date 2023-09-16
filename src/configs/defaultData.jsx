@@ -258,7 +258,7 @@ export const subscriptions = [
 export const demoUsers = [
     {
         id: 'U12321',
-        name: 'mahnoor',
+        name: 'mahnoor hashmi',
         organization: 'comsats',
         plan: 'Basic',
     },
@@ -311,3 +311,22 @@ export const demoUsers = [
         plan: 'Standard',
     },
 ];
+
+export const colors = [
+    "#6699CC",
+    "#7FB3D5",
+    "#99C2DD",
+    "#ADCCE5",
+    "#BFD9EC",
+    "#D1E5F3",
+    "#C3D6E0",
+    "#A8BBCD",
+    "#8EA0B9",
+    "#7595B3",
+    "#587FA3",
+    "#3D6B8C",
+    "#336677",
+    "#2B5666",
+    "#20404D"
+];
+  
