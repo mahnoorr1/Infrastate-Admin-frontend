@@ -2,9 +2,48 @@ import { Card, Typography } from "@mui/material";
 import theme from "../../../configs/theme";
 import AppButton from '../../../components/Buttons/button';
 import HoverZoom from '../../../components/CustomComponents/onhoverZoom';
+import EditPlanDialog from "./editDialogueBox";
+import { useState } from "react";
+import { BiCheckCircle, BiSolidCheckCircle } from 'react-icons/bi';
 
 const SubscriptionCard = ({plan}) => {
-    var benefits = plan.benefits;
+    const [openDialogue, setOpenDialogue] = useState(false);
+    const handleEditClick = () => {
+        setOpenDialogue(true);
+      };
+    const SolidCheckIcon = () => {
+        return(
+            <BiSolidCheckCircle style={{
+                color: theme.palette.shades.greenLite,
+                fontSize: '20px',
+            }}></BiSolidCheckCircle>
+        );
+    }
+
+    const CheckIcon = () => {
+        return (
+            <BiCheckCircle style={{
+                color: theme.palette.shades.greenLite,
+                fontSize: '20px',
+            }}></BiCheckCircle>
+        )
+    }
+
+    const BenefitItem = ({text, icon}) => {
+        return(
+            <div style={{
+                display: 'flex',
+                gap: '15px',
+            }}>
+                {icon}
+                <Typography 
+                variant="body2"
+                color={theme.palette.shades.greyText}>
+                    {text}
+                </Typography>   
+            </div>
+        )
+    }
     return(
         <Card sx={{
             backgroundColor: 'transparent',
@@ -67,46 +106,42 @@ const SubscriptionCard = ({plan}) => {
                 gap: '8px',
                 marginBottom: '15px',
             }}>
-                <Typography 
-                variant="body2"
-                color={theme.palette.shades.greyText}>
-                    Number of Projects: {plan.projects}
-                </Typography>
-                <Typography 
-                variant="body2"
-                color={theme.palette.shades.greyText}>
-                    Access to Construction Plans
-                </Typography>
-                <Typography 
-                variant="body2"
-                color={theme.palette.shades.greyText}>
-                    Access to Road Plans
-                </Typography>
-                <Typography 
-                variant="body2"
-                color={theme.palette.shades.greyText}>
-                    Access to Routing features
-                </Typography>
+                <BenefitItem 
+                text={`Number of Projects: ${plan.projects}`}
+                icon={<SolidCheckIcon></SolidCheckIcon>}></BenefitItem>
+                
+                <BenefitItem
+                text={'Access to Construction Plans'}
+                icon={plan.construction ? <SolidCheckIcon></SolidCheckIcon> : <CheckIcon></CheckIcon>}></BenefitItem>
+
+                <BenefitItem 
+                text={'Access to Road Plans'}
+                icon={plan.roads ? <SolidCheckIcon></SolidCheckIcon> : <CheckIcon></CheckIcon>}></BenefitItem>
+                
+                <BenefitItem 
+                text={'Access to Routing features'}
+                icon={plan.routesAccess ? <SolidCheckIcon></SolidCheckIcon> : <CheckIcon></CheckIcon>}></BenefitItem>
+
+                <BenefitItem 
+                text={'Access to CDA Rules'}
+                icon={plan.rulesAccess ? <SolidCheckIcon></SolidCheckIcon> : <CheckIcon></CheckIcon>}></BenefitItem>
                 {
                     plan.support > 5 ?
-                    <Typography 
-                    variant="body2"
-                    color={theme.palette.shades.greyText}>
-                         Unlimited Support
-                    </Typography>:
-                    <Typography 
-                    variant="body2"
-                    color={theme.palette.shades.greyText}>
-                         {plan.support} times support per day
-                    </Typography> 
+                    <BenefitItem text={'Unlimited Support'}
+                    icon={<SolidCheckIcon></SolidCheckIcon>}></BenefitItem>:
+                    <BenefitItem 
+                    text={`${plan.support} times support per day`}
+                    icon={<SolidCheckIcon></SolidCheckIcon>}></BenefitItem>
                 }
                 
             </Card>
             <HoverZoom>
                 <AppButton 
                 variant={'outlined'}
-                text={'Edit'}></AppButton>
+                text={'Edit'}
+                onClick={handleEditClick}></AppButton>
             </HoverZoom>
+            <EditPlanDialog plan={plan} open={openDialogue} handleClose={() => setOpenDialogue(false)} />
         </Card>
     );
 }
