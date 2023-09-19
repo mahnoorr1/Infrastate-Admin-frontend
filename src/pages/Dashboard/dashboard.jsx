@@ -7,6 +7,8 @@ import BarsDataset from '../../components/Charts/barChart';
 import PercentPieChart from '../../components/Charts/percentPieChart';
 import AlertsList from './Components/alertsList';
 import StatsCard from './Components/statsCard';
+import { BiMapPin, BiMap } from 'react-icons/bi';
+import { FiAlertTriangle } from 'react-icons/fi';
 
 
 const Dashboard = (props) => {
@@ -62,7 +64,7 @@ const Dashboard = (props) => {
                     }}>
                         <Card sx={{
                             width: '80%',
-                            height: '70%',
+                            height: '60%',
                             boxShadow: 'none',
                             border: 'none',
                             display: 'flex',
@@ -71,7 +73,12 @@ const Dashboard = (props) => {
                             <PercentPieChart percent={100} size={170}></PercentPieChart>
 
                         </Card>
-                        <Typography variant='h6' fontWeight={600}>100% Load</Typography>
+                        <Typography 
+                        variant='h6' 
+                        fontWeight={600}>100% Load</Typography>
+                        <Typography 
+                        variant='body2'
+                        color={'grey'}>50/50 Trackers working</Typography>
                         
 
                     </Card>
@@ -94,7 +101,7 @@ const Dashboard = (props) => {
                     }}>
                         <Card sx={{
                             width: '80%',
-                            height: '70%',
+                            height: '60%',
                             boxShadow: 'none',
                             border: 'none',
                             display: 'flex',
@@ -103,8 +110,12 @@ const Dashboard = (props) => {
                             <PercentPieChart percent={20} size={170}></PercentPieChart>
 
                         </Card>
-                        <Typography variant='h6' fontWeight={600}>20% Change Detected</Typography>
-                        
+                        <Typography 
+                        variant='h6' 
+                        fontWeight={600}>20% Change Detected</Typography>
+                        <Typography 
+                        variant='body2'
+                        color={'grey'}>Weekly change in 3 Trackers</Typography>
 
                     </Card>
                 </Card>
@@ -126,18 +137,33 @@ const Dashboard = (props) => {
                 stat={"20"}
                 subtitle1={"Active Tracker"}
                 subtitle2={"Capacity: 25"}
+                icon={<BiMapPin style={{
+                    fontSize: '35px',
+                    color: theme.palette.shades.greenLite,
+                }}></BiMapPin>}
+                iconBackColor={`${theme.palette.shades.greenMedium}20`}
                 ></StatsCard>
 
                 <StatsCard
                 stat={"105"}
                 subtitle1={"Trackers Applied"}
                 subtitle2={"Active: 20"}
+                icon={<BiMap style={{
+                    fontSize: '35px',
+                    color: theme.palette.shades.greenLite,
+                }}></BiMap>}
+                iconBackColor={`${theme.palette.shades.greenMedium}20`}
                 ></StatsCard>
 
                 <StatsCard
                 stat={"50"}
                 subtitle1={"UnChecked Alerts"}
                 subtitle2={"Resolved: 500"}
+                icon={<FiAlertTriangle style={{
+                    fontSize: '35px',
+                    color: theme.palette.shades.greenLite,
+                }}></FiAlertTriangle>}
+                iconBackColor={`${theme.palette.shades.greenMedium}20`}
                 ></StatsCard>
 
                 <StatsCard

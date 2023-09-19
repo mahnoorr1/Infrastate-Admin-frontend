@@ -14,7 +14,7 @@ const SubHeadingCard = ({text}) => {
             <Typography 
             variant='subheading1' 
             fontWeight={600} 
-            color={theme.palette.shades.greenDark}>
+            color={theme.palette.shades.greyText}>
                 {text}
             </Typography>
         </Card>
