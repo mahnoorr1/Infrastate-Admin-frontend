@@ -9,7 +9,7 @@ export const MainContainer = styled.div`
     !props.active ? '200px' : 'calc(var(--nav-width))'};
   transition: 2s;
   padding-top: 20px;
-  padding-left: 205px;
+  padding-left: 225px;
   padding-right: 10px;
   @media only screen and (max-width: 768px) {
 

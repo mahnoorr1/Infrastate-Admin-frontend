@@ -1,53 +1,67 @@
 import React, { useState } from 'react';
 import appLogo from '../../assets/appLogo.png';
-import { SidebarContainer, SidebarMenuContainer, StyledNavLink, LogoContainer, LogoOut } from './Sidebar.elements';
+import { 
+  SidebarContainer,
+  SidebarMenuContainer,
+  StyledNavLink,
+  LogoContainer,
+  LogoOut,
+ } from './Sidebar.elements';
+import { SlDoc } from 'react-icons/sl';
+import { CiHome } from 'react-icons/ci';
+import { PiUsers } from 'react-icons/pi';
+import { BiMapPin } from 'react-icons/bi';
+import { MdPayment } from 'react-icons/md';
+import { FiHelpCircle } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
+import { RiUserSettingsLine, RiAdminLine } from 'react-icons/ri';
+
 
 const sidebarData = [
   {
     title: 'Dashboard',
     path: '/Dashboard',
-    icon: 'bx bx-grid-alt nav_icon',
+    icon: CiHome,
   },
   {
     title: 'Tracker',
     path: '/tracker',
-    icon: 'bx bx-user nav_icon',
+    icon: BiMapPin,
   },
   {
     title: 'Rules',
     path: '/rules',
-    icon: 'bx bx-ruler nav_icon',
+    icon: SlDoc,
   },
   {
     title: 'Manage Users',
-    icon: 'bx bx-user-plus nav_icon',
+    icon: RiUserSettingsLine,
     subNav: [
       {
         title: 'Users',
         path: '/users/manageUsers',
-        icon: 'bx bx-user nav_icon',
+        icon: PiUsers,
       },
       {
         title: 'Admins',
         path: '/users/manageAdmins',
-        icon: 'bx bx-user-check nav_icon',
+        icon: RiAdminLine,
       },
     ],
   },
   {
     title: 'Subscriptions',
     path: '/subscriptions',
-    icon: 'bx bx-user-plus nav_icon',
+    icon: MdPayment,
   },
   {
     title: 'Support',
     path: '/support',
-    icon: 'bx bx-support nav_icon',
+    icon: FiHelpCircle,
   },
 ];
 
-export default function Sidebar(props) {
+const Sidebar= (props) => {
 
   const [isActive, setActive] = useState(null);
   const [activeSubMenu, setActiveSubMenu] = useState(null);
@@ -85,13 +99,13 @@ export default function Sidebar(props) {
               <div key={index}>
                 {item.subNav ? (
                   // Render submenu with toggle
-                  <StyledNavLink
+                  <StyledNavLink 
                     to="#"
                     className={strClass}
                     onClick={() => toggleSubMenu(index)}
                   >
-                    <i className={item.icon} />
-                    <span style={{ fontWeight: 'bold', fontSize: '18px' }}>
+                  <item.icon style={{fontSize: '20px', color: 'white'}} />
+                    <span>
                       {item.title}
                     </span>
                     <i
@@ -109,7 +123,7 @@ export default function Sidebar(props) {
                     className={strClass}
                     onClick={() => toggleClass(index)}
                   >
-                    <i className={item.icon} />
+                    <item.icon style={{fontSize: '20px', color: 'white'}} />
                     <span>{item.title}</span>
                   </StyledNavLink>
                 )}
@@ -122,7 +136,7 @@ export default function Sidebar(props) {
                         key={subIndex}
                         className={strClass}
                       >
-                        <i className={subItem.icon} />
+                        <subItem.icon style={{fontSize: '20px', color: 'white'}} />
                         <span style={{ fontSize: '16px' }}>
                           {subItem.title}
                         </span>
@@ -142,3 +156,5 @@ export default function Sidebar(props) {
     </SidebarContainer>
   );
 }
+
+export default Sidebar;
