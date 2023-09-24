@@ -11,7 +11,7 @@ import { SlDoc } from 'react-icons/sl';
 import { CiHome } from 'react-icons/ci';
 import { PiUsers } from 'react-icons/pi';
 import { BiMapPin } from 'react-icons/bi';
-import { MdPayment } from 'react-icons/md';
+import { GoCreditCard } from 'react-icons/go';
 import { FiHelpCircle } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import { RiUserSettingsLine, RiAdminLine } from 'react-icons/ri';
@@ -52,7 +52,7 @@ const sidebarData = [
   {
     title: 'Subscriptions',
     path: '/subscriptions',
-    icon: MdPayment,
+    icon: GoCreditCard,
   },
   {
     title: 'Support',

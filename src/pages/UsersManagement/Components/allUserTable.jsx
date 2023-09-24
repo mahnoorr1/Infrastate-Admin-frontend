@@ -1,6 +1,5 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { 
-  Button, 
   Card, 
   Paper, 
   Table, 
@@ -12,6 +11,10 @@ import {
   TableRow, 
   Typography } from '@mui/material';
 import theme from '../../../configs/theme';
+import { GoCreditCard } from 'react-icons/go';
+import { LiaUserEditSolid } from 'react-icons/lia'; 
+import EditUserDialog from './editUserDialogue';
+import { useEffect } from 'react';
 
 const columns = [
   { id: 'userID', label: 'User ID', minWidth: 80 },
@@ -79,46 +82,6 @@ const SubscriptionCard = ({ subscription }) => {
   )
 };
 
-const Actions = () => {
-  return(
-    <Card sx={{
-      boxShadow: 'none',
-      backgroundColor: 'transparent',
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '5px',
-      alignItems: 'center', 
-    }}>
-      <Button
-        variant="outlined" 
-        onClick={()=>{}}
-        sx={{
-            height: '25px',
-            width: '180px',
-            padding: '2px',
-            borderRadius: '15px',
-            borderWidth: '2px',
-            borderColor: theme.palette.shades.greenMedium,
-            color: theme.palette.shades.greenMedium,
-        }}
-        >edit</Button>
-        <Button
-        variant="outlined" 
-        onClick={()=>{}}
-        sx={{
-            height: '25px',
-            width: '180px',
-            padding: '2px',
-            borderRadius: '15px',
-            borderWidth: '2px',
-            borderColor: theme.palette.shades.greenMedium,
-            color: theme.palette.shades.greenMedium,
-        }}
-        >cancel subscription</Button>
-    </Card>
-  );
-}
-
 const rows = [
   createData('India', 'Ismail Chawla', 'mahnoorhashmi@gmail.com', 'basic', 323),
   createData('China', 'Rayyan Sheikh', 'mahnoorhashmi@gmail.com', 'pro', 95),
@@ -137,8 +100,51 @@ const rows = [
 
 const UsersTable = () => {
   const [page, setPage] = React.useState(0);
+  const [ user, setUser ] = useState();
+  const [openDialogue, setOpenDialogue] = useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [ editClicked, setEditClicked ] = useState(false);
+  const [ openEditDialogue, setOpenEditDialogue ] = useState(false);
+  const [ subscriptionClicked, setSubscriptionClicked ] = useState(false);
+  const [ cancelDialogue, setCancelDialogue ] = useState(false);
 
+  const Actions = ({user}) => {
+    const handleEditClick = () => {
+      setEditClicked(true);
+      setUser(user);
+      setTimeout(() => {
+        setEditClicked(false);
+      }, 100);
+      setOpenEditDialogue(true);
+    }
+    const handleEditDialogue = () => {
+      
+    }
+    return(
+      <Card sx={{
+        boxShadow: 'none',
+        backgroundColor: 'transparent',
+        display: 'flex',
+        gap: '30px',
+        alignItems: 'center', 
+        justifyContent: 'center',
+      }}>
+        <LiaUserEditSolid 
+        onClick={handleEditClick} 
+        style={{
+          fontSize: '25px',
+          color: editClicked ? theme.palette.shades.greenMedium : theme.palette.shades.greenLite,
+          cursor: 'pointer',
+        }}></LiaUserEditSolid>
+        
+        <GoCreditCard style={{
+          fontSize: '22px',
+          color: theme.palette.shades.red,
+          cursor: 'pointer',
+        }}></GoCreditCard>
+      </Card>
+    );
+  }
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -183,7 +189,7 @@ const UsersTable = () => {
                           ) : column.id === 'name' ? (
                             <NameAndEmail name={row.name} email={row.email}></NameAndEmail>
                           ) : column.id === 'actions' ? (
-                            <Actions></Actions>
+                            <Actions user = {row}></Actions>
                           ) : (
                             <span>
                               {value}
@@ -207,6 +213,7 @@ const UsersTable = () => {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
+      <EditUserDialog user={user} open={openDialogue} handleClose={() => setOpenDialogue(false)}></EditUserDialog>
     </Paper>
   );
 }
