@@ -14,7 +14,7 @@ import { BiMapPin } from 'react-icons/bi';
 import { GoCreditCard } from 'react-icons/go';
 import { FiHelpCircle } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-import { RiUserSettingsLine, RiAdminLine } from 'react-icons/ri';
+import { RiUserSettingsLine, RiAdminLine, RiBuilding2Line } from 'react-icons/ri';
 
 
 const sidebarData = [
@@ -27,6 +27,11 @@ const sidebarData = [
     title: 'Tracker',
     path: '/tracker',
     icon: BiMapPin,
+  },
+  {
+    title: 'Construction',
+    path: '/construction',
+    icon: RiBuilding2Line,
   },
   {
     title: 'Rules',

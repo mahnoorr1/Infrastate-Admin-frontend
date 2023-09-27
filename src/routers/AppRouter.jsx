@@ -6,6 +6,7 @@ import { SupportRoutes } from './SupportRoutes';
 import { DashboardRoutes } from './DashboardRoutes';
 import { SubscriptionRoutes } from './subscriptionRoutes';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ConstructionRoutes } from './ConstructionRoutes';
 
 export const AppRouter = () => {
   return (
@@ -17,7 +18,8 @@ export const AppRouter = () => {
         <Route path="/Support/*" element={<SupportRoutes/>}/>
         <Route path="/Rules/*" element={<RulesRoutes/>}/>
         <Route path="/users/*" element={<UsersRoutes/>}/>
-        <Route path="/subscriptions/*" element={<SubscriptionRoutes/>}></Route>
+        <Route path="/subscriptions/*" element={<SubscriptionRoutes/>}/>
+        <Route path="/construction" element={<ConstructionRoutes/>}/>
       </Routes>
     </BrowserRouter>
   );
