@@ -79,12 +79,9 @@ const Sidebar= (props) => {
     setActiveSubMenu(activeSubMenu === index ? null : index);
   };
 
-  const navigate = useNavigate();
-
   const logout = () => {
-    navigate('/auth', {
-      replace: true,
-    });
+    window.location.href = "/auth/login";
+    //need to upgrade login token here so user can't change route without loging in
   };
 
   return (
@@ -153,7 +150,7 @@ const Sidebar= (props) => {
             );
           })}
         </div>
-        <LogoOut to="auth" onClick={logout}>
+        <LogoOut onClick={logout}>
           <i className="bx bx-bookmark nav_icon" />
           <span>LogOut</span>
         </LogoOut>
