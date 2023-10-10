@@ -7,12 +7,13 @@ import { DashboardRoutes } from './DashboardRoutes';
 import { SubscriptionRoutes } from './subscriptionRoutes';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ConstructionRoutes } from './ConstructionRoutes';
+import { AuthRouter } from './AuthRouter';
 
 export const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/auth/*" element={<AuthRouter />} /> */}
+        <Route path="/auth/*" element={<AuthRouter />} />
         <Route path="/*" element={<DashboardRoutes />} />
         <Route path="/Tracker/*" element={<TrackerRoutes/>} />
         <Route path="/Support/*" element={<SupportRoutes/>}/>

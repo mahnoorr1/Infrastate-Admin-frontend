@@ -4,7 +4,6 @@
 * {
   box-sizing: border-box;
 }
-
 body {
   background-color: #E4FCFD;
   font-family: 'Roboto', sans-serif;
@@ -20,16 +19,20 @@ main {
   background-color: #E4FCFD;
 }
 
-:root {
-  --header-height: 3rem;
-  --nav-width: 68px;
-  --first-color: #9a9dc0;
-  --first-color-light: #545779;
+:root,
+#auth-root,
+#main-root {
   --main-color: #effafa;
   --white-color: #E4FCFD;
   --body-font: 'Nunito', sans-serif;
   --normal-font-size: 1rem;
   --z-fixed: 100;
+}
+#main-root{
+  --header-height: 3rem;
+  --nav-width: 68px;
+  --first-color: #9a9dc0;
+  --first-color-light: #545779;
 }
 *,
 ::before,
@@ -65,7 +68,7 @@ a {
 }
 
 .auth__main {
-  background-color: #b9bde8;
+  background-color: #121F27;
 }
 
 .auth__box-container {

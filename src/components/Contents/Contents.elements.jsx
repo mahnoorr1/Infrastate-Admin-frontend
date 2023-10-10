@@ -8,7 +8,7 @@ export const MainContainer = styled.div`
   padding: ${(props) =>
     !props.active ? '200px' : 'calc(var(--nav-width))'};
   transition: 2s;
-  padding-top: 20px;
+  padding-top: 3rem;
   padding-left: 225px;
   padding-right: 10px;
   @media only screen and (max-width: 768px) {

@@ -1,14 +1,25 @@
-import './index.css'
-import React from 'react'
-import App from './App.jsx'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { MarkerProvider } from './context/mapMarkerContext';
+import App from './App.jsx';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <MarkerProvider>
-      <App/>
-    </MarkerProvider>
-  </React.StrictMode>,
-)
+const currentRoute = window.location.pathname;
+
+if (currentRoute.startsWith('/auth')) {
+  ReactDOM.createRoot(document.getElementById('auth-root')).render(
+    <React.StrictMode>
+      <MarkerProvider>
+        <App />
+      </MarkerProvider>
+    </React.StrictMode>,
+  );
+} else {
+  ReactDOM.createRoot(document.getElementById('main-root')).render(
+    <React.StrictMode>
+      <MarkerProvider>
+        <App />
+      </MarkerProvider>
+    </React.StrictMode>,
+  );
+}
