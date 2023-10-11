@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-
 import Header from '../components/Header/Header';
+import { Routes, Route } from 'react-router-dom';
 import Sidebar from '../components/Sidebar/Sidebar';
-import Dashboard from '../pages/Dashboard/dashboard';
-export const DashboardRoutes = () => {
+import RulesMainScreen from '../pages/CDA_Rules/rulesMainScreen';
+export const RulesRoutes = () => {
   const [sidebarToggle, setSidebarToggle] = useState(true);
   const [activeClick, setActiveClick] = useState(false);
 
@@ -14,13 +13,11 @@ export const DashboardRoutes = () => {
       <Sidebar toggle={sidebarToggle} active={setActiveClick} />
 
       <Routes>
-        {/* GeneralPages(Limited) */}
         <Route
           exact
           path=""
-          element={<Dashboard toggle={sidebarToggle} />}
+          element={<RulesMainScreen toggle={sidebarToggle}/>}
         />
-        
       </Routes>
     </div>
   );
