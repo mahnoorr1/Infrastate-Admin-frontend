@@ -16,7 +16,7 @@ const Selection = ({data, label, updateZone}) => {
         <InputLabel sx={{
             marginLeft: '10px',
         }} variant="standard" htmlFor="controlled-select">
-          Select Zone
+          {label}
         </InputLabel>
         <Select 
           label={label}

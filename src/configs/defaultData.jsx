@@ -329,4 +329,76 @@ export const colors = [
     "#2B5666",
     "#20404D"
 ];
-  
+
+export const constructionTypes = [
+    {
+        key: 1,
+        value: 'School',
+        label: 'School',
+    },
+    {
+        key: 2,
+        value: 'Any(In Markaz)',
+        label: 'Any(In Markaz)',
+    },
+    {
+        key: 3,
+        value: 'Any(In Blue Area)',
+        label: 'Any(In Blue Area)',
+    },
+    {
+        key: 4,
+        value: 'Stand Alone Commercial Project',
+        label: 'Stand Alone Commercial Project',
+    },
+    {
+        key: 5,
+        value: 'Industrial Building',
+        label: 'Industrial Building',
+    },
+    {
+        key: 6,
+        value: 'Petrol Pump/CNG Station',
+        label: 'Petrol Pump/CNG Station',
+    },
+    {
+        key: 7,
+        value: 'Masjid',
+        label: 'Masjid',
+    },
+    {
+        key: 8,
+        value: 'Farm Housing',
+        label: 'Farm Housing',
+    },
+    {
+        key: 9,
+        value: 'Marriage Hall',
+        label: 'Marriage Hall',
+    },
+    {
+        key: 10,
+        value: 'Event Hall',
+        label: 'Event Hall',
+    },
+    {
+        key: 11,
+        value: 'Marque',
+        label: 'Marque',
+    },
+    {
+        key: 12,
+        value: 'Residential Terraced/ Attached',
+        label: 'Residential Terraced/ Attached',
+    },
+    {
+        key: 13,
+        value: 'Residential Semi Detached',
+        label: 'Residential Semi Detached',
+    },
+    {
+        key: 14,
+        value: 'Residential Detached',
+        label: 'Residential Detached',
+    },
+];

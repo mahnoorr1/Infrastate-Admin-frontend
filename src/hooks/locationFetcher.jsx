@@ -12,6 +12,7 @@ const useLocationFetcher = () => {
 
       if (response.data.display_name) {
         setLocationName(response.data.display_name);
+        console.log(response);
       }
     } catch (error) {
       console.error('Error fetching location name:', error);
