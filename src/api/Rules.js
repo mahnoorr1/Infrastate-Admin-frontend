@@ -8,7 +8,6 @@ export const getAllRules = async () => {
       const response = await Axios.get(`${baseURL}/getAllRules`);
       return response.data; 
     } catch (error) {
-       
       
       if (error.response && error.response.status === 401) {
         if (error.response.data.message === 'Not Authorized No Token.') {

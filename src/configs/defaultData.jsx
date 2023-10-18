@@ -373,18 +373,8 @@ export const constructionTypes = [
     },
     {
         key: 9,
-        value: 'Marriage Hall',
-        label: 'Marriage Hall',
-    },
-    {
-        key: 10,
-        value: 'Event Hall',
-        label: 'Event Hall',
-    },
-    {
-        key: 11,
-        value: 'Marque',
-        label: 'Marque',
+        value: 'Marriage Hall/ Event Hall / Marque',
+        label: 'Marriage Hall/ Event Hall / Marque',
     },
     {
         key: 12,

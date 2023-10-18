@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Card,
   Paper,
@@ -13,56 +13,100 @@ import {
 import theme from '../../../configs/theme';
 import { FiEdit3 } from 'react-icons/fi';
 import { MdDeleteSweep } from 'react-icons/md';
+import { getAllRules } from '../../../api/Rules';
 import ZoneFilterComponent from './zoneFilterComponent';
 
 const columns = [
-  { id: 'ruleID', label: 'Rule ID', minWidth: 80 },
+  { id: 'Construction_Type', label: 'Construction Type', minWidth: 80 },
   {
-    id: 'zone',
-    label: 'Zone',
+    id: 'max_storeys',
+    label: 'Max Storeys',
     minWidth: 120,
   },
   {
     id: 'plotSize',
-    label: 'Plot Size',
+    label: 'Plot Size (sft)',
     minWidth: 120,
     align: 'left',
   },
   {
-    id: 'roadDistance',
-    label: 'Distance from Road',
+    id: 'Maximum_Ground_Coverage',
+    label: 'Ground Coverage',
     minWidth: 100,
+    align: 'left',
+  },
+  {
+    id: 'Maximum_FAR',
+    label: 'MAx FAR',
+    minWidth: 50,
+    align: 'left',
+  },
+  {
+    id: 'Front_Setback_Min',
+    label: 'Min Front Setback',
+    minWidth: 30,
+    align: 'left',
+  },
+  {
+    id: 'Setbacks',
+    label: 'Setbacks',
+    minWidth: 30,
+    align: 'left',
+  },
+  {
+    id: 'Basement',
+    label: 'Basement',
+    minWidth: 30,
+    align: 'left',
+  },
+  {
+    id: 'Other',
+    label: 'Other Rules',
+    minWidth: 50,
     align: 'left',
   },
   {
     id: 'actions',
     label: 'Actions',
-    minWidth: 120,
+    minWidth: 30,
     align: 'center',
   },
-];
-
-function createData(ruleID, zone, plotSize, roadDistance) {
-  return { ruleID, zone, plotSize, roadDistance };
-}
-
-const initialRows = [
-  //        id, zone, plot size, distance from road,
-  createData('R00001', 'zone1', '24x60', '10'),
-  createData('R00002', 'zone2', '24x60', '10'),
-  createData('R00003', 'zone2', '24x60', '10'),
-  createData('R00004', 'zone1', '24x60', '10'),
-  createData('R00005', 'zone1', '24x60', '10'),
-  createData('R00006', 'zone3', '24x60', '10'),
-  createData('R00007', 'zone3', '24x60', '10'),
-  createData('R00008', 'zone4', '24x60', '10'),
-  createData('R00009', 'zone4', '24x60', '10'),
 ];
 
 const RulesTable = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [selectedZone, setSelectedZone] = useState('All');
+  const [rules, setRules] = useState([]);
+
+  useEffect(() => {
+    async function fetchRules() {
+      try {
+        const data = await getAllRules();
+        if (data) {
+          setRules(data);
+        }
+      } catch (error) {
+        console.error('Error fetching rules:', error);
+      }
+    }
+
+    fetchRules();
+  }, []);
+
+  const initialRows = 
+    rules.map((rule)=>({
+      // createData(rule.ConstructionType, rule.Plot_Measurement_Min, rule.Plot_Measurement_Max, rule.Maximun_Ground_Coverage, rule.Maximum_No_of_storeys, rule.Maximum_FAR, rule.Setbacks, rule.Basement, rule.Front_Setback_Min, rule.other);
+      Construction_Type: rule.Contstruction_Type,
+      max_storeys: rule.Maximum_No_of_storeys,
+      plotSize: `${rule.Plot_Measurment_Min} - ${rule.Plot_Measurment_Max}`,
+      Maximum_Ground_Coverage: rule.Maximum_Ground_coverage,
+      Maximum_FAR: rule.Maximum_FAR,
+      Setbacks: rule.Setbacks == "" ? 'None' : rule.Setbacks,
+      Basement: rule.Basement == "" ? 'None': rule.Basement ,
+      Front_Setback_Min: rule.Front_Setback_Min == "" ? 'None': rule.Front_Setback_Min,
+      Other: rule.Other == "" ? 'None' : rule.Other,
+    }));
 
   const handleFilterChange = (zone) => {
     setSelectedZone(zone);
@@ -101,11 +145,12 @@ const RulesTable = () => {
 
   return (
     <Card>
-      <ZoneFilterComponent data={initialRows} onFilterChange={handleFilterChange}></ZoneFilterComponent>
+      {/* <ZoneFilterComponent data={initialRows} onFilterChange={handleFilterChange}></ZoneFilterComponent> */}
+      
       <Paper sx={{ width: '100%', overflow: 'hidden', marginTop: theme.customStyles.gaps.major }}>
-        <TableContainer sx={{ maxHeight: 440 }}>
+        <TableContainer sx={{ maxHeight: '80vh' }}>
           <Table stickyHeader aria-label="sticky table">
-            <TableHead>
+          <TableHead>
               <TableRow>
                 {columns.map((column) => (
                   <TableCell
@@ -120,9 +165,9 @@ const RulesTable = () => {
                   </TableCell>
                 ))}
               </TableRow>
-            </TableHead>
+          </TableHead>
             <TableBody>
-              {filteredRows
+              {initialRows
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (

@@ -4,6 +4,8 @@ import { Card, Typography, Button, TextField } from '@mui/material';
 import signIn_image from '../../assets/signIn_image.jpg';
 import appLogo from '../../assets/appLogo.png';
 import HoverZoom from '../../components/CustomComponents/onhoverZoom';
+import { loginAdmin } from '../../api/Admin';
+import { useNavigate } from 'react-router';
 
 const LoginScreen = () => {
   const inputStyles = {
@@ -31,6 +33,7 @@ const LoginScreen = () => {
     },
   };
 
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -46,7 +49,7 @@ const LoginScreen = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const newErrors = {};
 
@@ -58,12 +61,15 @@ const LoginScreen = () => {
 
     if (!formData.password) {
       newErrors.password = 'Password is required';
-    } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
+    } else if (formData.password.length < 3) {
+      newErrors.password = 'Password must be at least 3 characters';
     }
 
     if (Object.keys(newErrors).length === 0) {
-      console.log('Form data:', formData);
+      const res = await loginAdmin(formData.email,formData.password)
+      if(res){
+        navigate('/')
+      }
     } else {
       setErrors(newErrors);
     }

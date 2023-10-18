@@ -9,7 +9,7 @@ const Selection = ({data, label, updateZone}) => {
     };
 
   return (
-    <Box sx={{ width: '25%' }}>
+    <Box sx={{ width: '300px' }}>
       <FormControl sx={{
         
       }} fullWidth>
@@ -19,6 +19,7 @@ const Selection = ({data, label, updateZone}) => {
           {label}
         </InputLabel>
         <Select 
+        fullWidth
           label={label}
           value={selectedZone}
           onChange={handleZoneChange}

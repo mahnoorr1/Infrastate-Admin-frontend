@@ -42,16 +42,22 @@ return null;
 
 }
 
-export const loginUser = async (email, password) => {
+export const loginAdmin = async (email, password) => {
 
 
 
     try {
       const response = await Axios.post(`${baseURL}/login`, { email, password });
-  
-      localStorage.setItem("LoggedIn" , true)
-      localStorage.setItem("token", response.data.token);
-      return true;
+      console.log(response.data)
+      if(response.data.status == '200'){
+        localStorage.setItem("LoggedIn" , true)
+        localStorage.setItem("token", response.data.token);
+        return true;
+      }
+      else{
+        alert(response.data.error)
+        return false
+      }
   
   
     } catch (error) {
