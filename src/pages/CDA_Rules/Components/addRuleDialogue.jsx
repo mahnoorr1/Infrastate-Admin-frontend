@@ -37,6 +37,15 @@ const AddRuleDialog = ({rule, open, handleClose}) => {
     handleClose(); 
   }
   const handleSaveClick = async () => {
+    console.log(maxStoreys);
+    console.log(far);
+    console.log(groundCoverage);
+    console.log(setbacks);
+    console.log(Basement);
+    console.log(selectedConstructionType);
+    console.log(minPlotSize + " " + maxPlotSize);
+    console.log(frontSetback);
+    console.log(other);
     const ruleData = {
       Maximum_No_of_storeys: maxStoreys,
       Maximum_FAR: far,

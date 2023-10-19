@@ -29,7 +29,7 @@ export const getPrivacyPolicy = async () => {
 
 export const updatePrivacyPolicies = async (policyId, updatedData) => {
     try {
-      const response = await Axios.put(`/Policies/updatePolicies${policyId}` , {updatedData});
+      const response = await Axios.put(`/Policies/updatePolicies${policyId}` , updatedData);
       return response.data; 
     } catch (error) {
        

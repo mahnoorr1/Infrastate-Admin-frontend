@@ -60,7 +60,7 @@ export const getOnefeedback = async (fid) => {
 export const createfeedback = async (feedbackData) => {
 
     try {
-      const response = await Axios.post(`${baseURL}/CreateResponse` , {feedbackData});
+      const response = await Axios.post(`${baseURL}/CreateResponse` , feedbackData);
       return response.data;
   
   

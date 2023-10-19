@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const useLocationFetcher = () => {
   const [locationName, setLocationName] = useState('fetching..');
+  const [address, setAddress] = useState({});
 
   const fetchLocationName = async (lat, lng) => {
     try {
@@ -12,6 +13,7 @@ const useLocationFetcher = () => {
 
       if (response.data.display_name) {
         setLocationName(response.data.display_name);
+        setAddress(response.data);
         console.log(response);
       }
     } catch (error) {
@@ -19,7 +21,7 @@ const useLocationFetcher = () => {
     }
   };
 
-  return { locationName, fetchLocationName };
+  return { locationName, fetchLocationName, address };
 };
 
 export default useLocationFetcher;

@@ -60,7 +60,7 @@ export const getOnesubscription = async (sid) => {
 export const createSubscription = async (subData) => {
 
     try {
-      const response = await Axios.post(`${baseURL}/createSubscription` , {subData});
+      const response = await Axios.post(`${baseURL}/createSubscription` , subData);
       return response.data;
   
   

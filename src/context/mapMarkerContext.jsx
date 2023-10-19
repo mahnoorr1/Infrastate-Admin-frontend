@@ -5,7 +5,7 @@ const MapMarkerContext = createContext();
 
 const MarkerProvider = ({ children }) => {
   const [location, setLocation] = useState({ lat: 33.709256, lng: 73.082362 });
-  const { locationName, fetchLocationName } = useLocationFetcher();
+  const { locationName, fetchLocationName, address } = useLocationFetcher();
   fetchLocationName(location);
 
   const updateLocation = (location) => {
@@ -17,6 +17,7 @@ const MarkerProvider = ({ children }) => {
     location,
     locationName,
     updateLocation,
+    address
   };
 
   return (

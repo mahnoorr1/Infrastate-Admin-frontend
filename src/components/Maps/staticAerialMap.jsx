@@ -43,7 +43,7 @@ const StaticAerialMap = ({ height, width }) => {
 
         {points.map((point, index) => {
         // Fetch location name for the current point using hook
-        const { locationName, fetchLocationName } = useLocationFetcher();
+        const { locationName, fetchLocationName, address } = useLocationFetcher();
         fetchLocationName(point.lat, point.lng);
         return (
           <Marker key={index} position={[point.lat, point.lng]} draggable={false}>

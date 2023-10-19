@@ -57,7 +57,7 @@ export const getOneRule = async (rid) => {
 
 export const CreateRule = async (ruleData) => {
     try {
-      const response = await Axios.post(`${baseURL}/createRule`,{ruleData});
+      const response = await Axios.post(`${baseURL}/createRule`,ruleData);
       return response.data; 
     } catch (error) {
        
@@ -84,7 +84,7 @@ export const CreateRule = async (ruleData) => {
 
 export const updateRule = async (rid, updatedData) => {
     try {
-      const response = await Axios.put(`${baseURL}/updateRule/${rid}`,{updatedData});
+      const response = await Axios.put(`${baseURL}/updateRule/${rid}`,updatedData);
       return response.data; 
     } catch (error) {
        

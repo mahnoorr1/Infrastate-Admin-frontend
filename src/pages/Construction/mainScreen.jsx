@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Typography } from "@mui/material";
+import { Typography, Slide } from "@mui/material";
 import AppButton from "../../components/Buttons/button";
 import {MainContainer} from "../../components/Contents/Contents.elements";
 import { MapMarkerContext } from "../../context/mapMarkerContext";
@@ -8,14 +8,22 @@ import theme from '../../configs/theme';
 import Selection from '../../components/CustomComponents/selectComponent';
 import { constructionTypes } from '../../configs/defaultData';
 import InputField from '../../components/CustomComponents/inputField';
+import AlertDialog from '../../components/CustomComponents/alertDialogue';
 
 const ConstructionMainScreen = (props) => {
-    const {location, locationName, updateLocation} = useContext(MapMarkerContext);
+    const {location, locationName, updateLocation, address} = useContext(MapMarkerContext);
     const [selectedConstructionType, setSelectedConstructionType] = useState('');
     const [ plotSize, setPlotSize ] = useState(0);
-
+    const [openDialogue, setOpenDialogue] = useState(false);
+   
     const handlePlotSize = (event) => {
         setPlotSize(event.target.value);
+    }
+
+    const handleApply = (event) => {
+        if(address.address.municipality == 'Zone I' || address.address.municipality == 'Zone III' ){
+            
+        }
     }
     return (
         <MainContainer active={props.toggle}>
@@ -94,8 +102,13 @@ const ConstructionMainScreen = (props) => {
                 <AppButton 
                 variant={'outlined'} 
                 text={'Apply Filter'}
-                onClick={()=>{}}></AppButton>
+                onClick={handleApply}></AppButton>
             </div>
+            <AlertDialog 
+            content={'Construction Not Allowed in Choosen Area'}
+            open={openDialogue}
+            handleClose={()=>setOpenDialogue(false)}
+            ></AlertDialog>
         </MainContainer>
     )
 }

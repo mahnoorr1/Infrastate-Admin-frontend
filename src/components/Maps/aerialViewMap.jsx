@@ -5,7 +5,7 @@ import {MapMarkerContext} from '../../context/mapMarkerContext';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 function AerialMap({ height, width }) {
-  const { location, locationName, updateLocation } = useContext(MapMarkerContext);
+  const { location, locationName, updateLocation, address } = useContext(MapMarkerContext);
   
   const handleMarker1DragEnd = (e) => {
     const { lat, lng } = e.target._latlng;
