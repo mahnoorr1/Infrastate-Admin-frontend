@@ -84,7 +84,9 @@ const Sidebar= (props) => {
     setActiveSubMenu(activeSubMenu === index ? null : index);
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await localStorage.removeItem('LoggedIn');
+    await localStorage.removeItem('token');
     window.location.href = "/auth/login";
     //need to upgrade login token here so user can't change route without loging in
   };

@@ -15,7 +15,7 @@ import theme from '../../configs/theme';
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
   });
-const AlertDialog = ({content, open, handleClose}) => {
+const AlertDialog = ({label, content, open, handleClose}) => {
   
     const handleClick = () => {
       handleClose(); 
@@ -27,7 +27,7 @@ const AlertDialog = ({content, open, handleClose}) => {
           PaperProps={{ 
             sx: {
                 borderRadius: '10px', 
-                width: '90%',
+                width: '450px',
             },
           }}
           open={open} 
@@ -40,7 +40,7 @@ const AlertDialog = ({content, open, handleClose}) => {
               variant='h6'
               fontWeight={600}
               color={theme.palette.shades.greenDark}>
-                  Alert
+                  {label}
               </Typography>
               <hr/>
           </DialogTitle>

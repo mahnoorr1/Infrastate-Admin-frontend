@@ -3,8 +3,22 @@ import theme from '../../configs/theme';
 import { MainContainer } from "../../components/Contents/Contents.elements"
 import SubscriptionCard from "./Components/subscriptionCard";
 import { subscriptions, demoUsers} from "../../configs/defaultData";
+import { getsubscriptions } from "../../api/subscription";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const ManageSubscriptions = (props) => {
+    const [ subscriptions, setSubscriptions ] =useState([]);
+    const getSubscriptionsPlans = async () => {
+        const subscriptions = await getsubscriptions();
+        setSubscriptions(subscriptions);
+        console.log(subscriptions);
+    }
+
+    useEffect(()=> {
+        getSubscriptionsPlans();
+    }, [])
+
     return <MainContainer active = {props.toggle}>
         <Typography sx={{
             display: 'flex',

@@ -6,20 +6,37 @@ import emptyMailBox from '../../../assets/emptyMailBox.png'
 import { supportAlerts } from '../../../configs/defaultData';
 import { SupportNotificationContext } from '../../../context/supportNotifContext';
 import TopNavBar from "../../../components/CustomComponents/simpleNavBar";
+import { useEffect } from 'react';
+import { getAllfeedbacks } from '../../../api/feedback';
 
 const categories = ['Reports', 'Feedbacks'];
 const reports = supportAlerts.filter((alert) => alert.type == 'report');
 const feedbacks = supportAlerts.filter((alert) => alert.type == 'feedback');
 
 const ReportsAndFeedbackList = () => {
-    const [data, setData] = useState(reports);
+    const [report, setReports] = useState();
+    const [feed, setFeedbacks] = useState();
+    const [data, setData] = useState(null);
+    const getFeedbacks = async ()=>{
+        const res = await getAllfeedbacks();
+        console.log(res);
+        const feedback = res.filter((res) => res.type == 'feedback');
+        const reports = res.filter((res) => res.type == 'report');
+        setReports(reports);
+        setFeedbacks(feedback);
+        setData(report);
+    }
+    useEffect(()=> {
+        getFeedbacks()
+    },[])
+    
     const {notification, updateSelectedNotification} = useContext(SupportNotificationContext);
 
     const handleCategoryChange = (newCategory) => {
         if(newCategory === 'Reports'){
-            setData(reports);
+            setData(report);
         } else if(newCategory === 'Feedbacks'){
-            setData(feedbacks);
+            setData(feed);
         }
     }
     const handleAlertClick = (alert) => {
@@ -36,7 +53,7 @@ const ReportsAndFeedbackList = () => {
         }}>
             <TopNavBar categories={categories} onCategoryChange={handleCategoryChange}></TopNavBar>
             {
-                data.length == 0 ? 
+                data?.length == 0 ? 
                 <Card sx={{
                     display: 'flex',
                     border: 'none',
@@ -59,7 +76,7 @@ const ReportsAndFeedbackList = () => {
                     </Card>
                     <Typography marginTop={'20px'} variant='body1' color={'grey'}>empty mailbox</Typography>
                 </Card> :
-                data.map((alert) => {
+                data?.map((alert) => {
                     return(
                         <AlertCard alert={alert} onClick={handleAlertClick}></AlertCard>
                     )

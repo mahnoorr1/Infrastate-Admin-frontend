@@ -29,10 +29,9 @@ export const getPrivacyPolicy = async () => {
 
 export const updatePrivacyPolicies = async (policyId, updatedData) => {
     try {
-      const response = await Axios.put(`/Policies/updatePolicies${policyId}` , updatedData);
+      const response = await Axios.put(`/Policies/updatePolicies/${policyId}` , updatedData);
       return response.data; 
-    } catch (error) {
-       
+    } catch (error) { 
       
       if (error.response && error.response.status === 401) {
         if (error.response.data.message === 'Not Authorized No Token.') {

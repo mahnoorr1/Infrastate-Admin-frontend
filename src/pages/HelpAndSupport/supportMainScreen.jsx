@@ -8,12 +8,55 @@ import ReportsAndFeedbackList from "./Components/reportsFeedsList";
 import HoverZoom from '../../components/CustomComponents/onhoverZoom';
 import { MainContainer } from "../../components/Contents/Contents.elements";
 import { SupportNotificationContext } from '../../context/supportNotifContext';
+import { createfeedback } from '../../api/feedbackResponse';
+import { getPrivacyPolicy, updatePrivacyPolicies } from '../../api/Policies';
 
 const HelpAndSupport = (props) => {
     const {notification, updateSelectedNotification } = useContext(SupportNotificationContext);
     const [changeToReply, setChangeToReply] = useState(false);
     const [alertType, setAlertType] = useState(notification.type);
     const [reportDescription, setReportDescription] = useState("");
+    const [privacy, setPrivacy ] = useState(null);
+    const [privacyID, setPrivacyID] = useState();
+    const [terms, setTerms ] = useState(null);
+    console.log(notification);
+    const reportResponse = async () =>{
+        const feedData = {
+            feedback: notification._id,
+            subject: notification.subject,
+            description: reportDescription,
+            date: new Date(),
+        }
+        const res = await createfeedback(feedData);
+        console.log(res.status)
+        setReportDescription("");
+    }
+    const handleDescriptionChange = (event) => {
+        setReportDescription(event.target.value);
+    }
+    const getprivacy = async() => {
+        const response = await getPrivacyPolicy();
+        setPrivacy(response.Privacy_Policy);
+        setTerms(response.System_Term);
+        setPrivacyID(response._id);
+        console.log(response._id);
+    }
+
+    const updatePolicies = async() => {
+        const data = {
+            Privacy_Policy: privacy,
+            System_Term: terms,
+        }
+        console.log(privacyID)
+        const policies = await updatePrivacyPolicies(privacyID, data);
+        console.log(policies)
+    }
+    const handlePrivacyChange = (event) => {
+        setPrivacy(event.target.value);
+    }
+    const handleTermsChange = (event) => {
+        setTerms(event.target.value);
+    }
     useEffect(() => {
         if (notification.type === 'feedback') {
           setAlertType('feedback');
@@ -21,7 +64,6 @@ const HelpAndSupport = (props) => {
         } else if (notification.type === 'report') {
           setAlertType('report');
           setChangeToReply(false);
-          //this needs to fix
         }
       }, [notification.type]);
       useEffect(() => {
@@ -30,6 +72,9 @@ const HelpAndSupport = (props) => {
         }
       }, [notification.type]);
     
+    useEffect(() => {
+        getprivacy()
+    },[])
     return(
         <MainContainer active = {props.toggle}>
             <Card sx={{
@@ -242,6 +287,7 @@ const HelpAndSupport = (props) => {
                                     multiline
                                     fullWidth
                                     value={reportDescription}
+                                    onChange={handleDescriptionChange}
                                     rows={8} 
                                     variant="outlined" 
                                     InputProps={{
@@ -263,7 +309,7 @@ const HelpAndSupport = (props) => {
                                         text={'Send Response'} 
                                         variant={'outlined'}
                                         onClick={()=>{
-                                            //send Email
+                                            reportResponse()
                                         }}
                                         ></AppButton>
                                     </HoverZoom>
@@ -310,7 +356,8 @@ const HelpAndSupport = (props) => {
                         <TextField 
                         multiline
                         fullWidth
-                        value={sampleParagraph}
+                        value={privacy}
+                        onChange={handlePrivacyChange}
                         rows={15} 
                         variant="outlined" 
                         InputProps={{
@@ -333,7 +380,8 @@ const HelpAndSupport = (props) => {
                         <TextField 
                         multiline
                         fullWidth
-                        value={sampleParagraph}
+                        value={terms}
+                        onChange={handleTermsChange}
                         rows={15} 
                         variant="outlined" 
                         InputProps={{
@@ -356,7 +404,7 @@ const HelpAndSupport = (props) => {
                         text={'Update'} 
                         variant={'outlined'}
                         onClick={()=>{
-                            //update terms
+                            updatePolicies()
                         }}
                         ></AppButton>
                     </HoverZoom>

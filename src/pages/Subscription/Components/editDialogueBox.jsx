@@ -21,12 +21,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const EditPlanDialog = ({plan, open, handleClose}) => {
   const [price, setPrice] = useState(plan.price);
-  const [project, setProject] = useState(plan.projects);
-  const [support, setSupport] = useState(plan.support);
-  const [roadChecked, setRoadChecked] = useState(plan.roads);
+  const [project, setProject] = useState(plan.projectsAllowed);
+  const [support, setSupport] = useState(plan.support_per_day);
+  const [roadChecked, setRoadChecked] = useState(plan.RoadPlanAllowed);
   const [rulesChecked, setRulesChecked] = useState(plan.rulesAccess);
   const [routesChecked, setRoutesChecked] = useState(plan.routesAccess);
-  const [constructionChecked, setConstructionChecked] = useState(plan.construction);
+  const [constructionChecked, setConstructionChecked] = useState(plan.constructionPlanAllowed);
 
   const handlePriceChange = (event) => {
       setPrice(event.target.value); 

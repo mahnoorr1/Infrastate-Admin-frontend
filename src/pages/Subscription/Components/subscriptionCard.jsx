@@ -7,6 +7,7 @@ import { useState } from "react";
 import { BiCheckCircle, BiSolidCheckCircle } from 'react-icons/bi';
 
 const SubscriptionCard = ({plan}) => {
+    console.log(plan);
     const [openDialogue, setOpenDialogue] = useState(false);
     const handleEditClick = () => {
         setOpenDialogue(true);
@@ -61,7 +62,7 @@ const SubscriptionCard = ({plan}) => {
             <Typography
             variant="h6"
             fontWeight={600}
-            color={theme.palette.shades.greyText}>{plan.name}</Typography>
+            color={theme.palette.shades.greyText}>{plan.type}</Typography>
             <Card sx={{
                 height: '100px',
                 width: '100px',
@@ -107,16 +108,16 @@ const SubscriptionCard = ({plan}) => {
                 marginBottom: '15px',
             }}>
                 <BenefitItem 
-                text={`Number of Projects: ${plan.projects}`}
+                text={`Number of Projects: ${plan.projectsAllowed}`}
                 icon={<SolidCheckIcon></SolidCheckIcon>}></BenefitItem>
                 
                 <BenefitItem
                 text={'Access to Construction Plans'}
-                icon={plan.construction ? <SolidCheckIcon></SolidCheckIcon> : <CheckIcon></CheckIcon>}></BenefitItem>
+                icon={plan.constructionPlanAllowed ? <SolidCheckIcon></SolidCheckIcon> : <CheckIcon></CheckIcon>}></BenefitItem>
 
                 <BenefitItem 
                 text={'Access to Road Plans'}
-                icon={plan.roads ? <SolidCheckIcon></SolidCheckIcon> : <CheckIcon></CheckIcon>}></BenefitItem>
+                icon={plan.RoadPlanAllowed ? <SolidCheckIcon></SolidCheckIcon> : <CheckIcon></CheckIcon>}></BenefitItem>
                 
                 <BenefitItem 
                 text={'Access to Routing features'}
@@ -126,11 +127,11 @@ const SubscriptionCard = ({plan}) => {
                 text={'Access to CDA Rules'}
                 icon={plan.rulesAccess ? <SolidCheckIcon></SolidCheckIcon> : <CheckIcon></CheckIcon>}></BenefitItem>
                 {
-                    plan.support > 5 ?
+                    plan.support_per_day > 5 ?
                     <BenefitItem text={'Unlimited Support'}
                     icon={<SolidCheckIcon></SolidCheckIcon>}></BenefitItem>:
                     <BenefitItem 
-                    text={`${plan.support} times support per day`}
+                    text={`${plan.support_per_day} times support per day`}
                     icon={<SolidCheckIcon></SolidCheckIcon>}></BenefitItem>
                 }
                 
