@@ -15,6 +15,7 @@ import { FiEdit3 } from 'react-icons/fi';
 import { MdDeleteSweep } from 'react-icons/md';
 import { getAllRules } from '../../../api/Rules';
 import ZoneFilterComponent from './zoneFilterComponent';
+import EditRuleDialog from './editRuleDialog';
 
 const columns = [
   { id: 'Construction_Type', label: 'Construction Type', minWidth: 80 },
@@ -78,6 +79,9 @@ const RulesTable = () => {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [selectedZone, setSelectedZone] = useState('All');
   const [rules, setRules] = useState([]);
+  const [selectedRule, setSelectedRule] = useState(null);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [deleteDialog, setDelDialogOpen] = useState(false);
 
   useEffect(() => {
     async function fetchRules() {
@@ -112,19 +116,32 @@ const RulesTable = () => {
     setSelectedZone(zone);
   };
 
-  const Actions = () => {
+  const Actions = ({ruleID}) => {
+    const handleEdit = (ruleID) => {
+      const selectedRule = rules.find((r) => r._id === ruleID);
+      setSelectedRule(selectedRule);
+      setEditDialogOpen(true);
+    }
+    const handleDelete = () => {
+      setDelDialogOpen(true);
+    }
     return (
       <div style={{
         gap: '20px',
         display: 'flex',
         justifyContent: 'center'
       }}>
-        <FiEdit3 style={{
-          color: theme.palette.shades.greenLite,
-          fontSize: '20px',
-          cursor: 'pointer',
-        }}></FiEdit3>
-        <MdDeleteSweep style={{
+        <FiEdit3
+          onClick={() => handleEdit(ruleID)}
+          style={{
+            color: theme.palette.shades.greenLite,
+            fontSize: '20px',
+            cursor: 'pointer',
+          }}
+        ></FiEdit3>
+        <MdDeleteSweep
+        onClick={handleDelete}
+         style={{
           color: theme.palette.shades.red,
           fontSize: '20px',
           cursor: 'pointer',
@@ -171,14 +188,14 @@ const RulesTable = () => {
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row) => {
                   return (
-                    <TableRow hover role="checkbox" tabIndex={-1} key={row.ruleID}>
+                    <TableRow hover role="checkbox" tabIndex={-1} key={row._id}>
                       {columns.map((column) => {
                         const value = row[column.id];
                         return (
                           <TableCell key={column.id} align={column.align}>
                             {
                               column.id === 'actions' ? (
-                                <Actions></Actions>
+                                <Actions rule = {row._id}></Actions>
                               ) : (
                                 <span>
                                   {value}
@@ -204,6 +221,7 @@ const RulesTable = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
       </Paper>
+      <EditRuleDialog rule={selectedRule} open={editDialogOpen} handleClose={()=>setDelDialogOpen(false)}></EditRuleDialog>
     </Card>
   );
 }
