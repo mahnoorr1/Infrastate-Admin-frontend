@@ -3,8 +3,8 @@ import { Card, Typography } from "@mui/material";
 import PieChartWithPaddingAngle from "../../../components/Charts/halfPieChart";
 
 const pieChartdata = [
-    { label: 'changed', value: 100 },
-    { label: 'not changed', value: 300 },
+    { label: 'changed', value: 5 },
+    { label: 'not changed', value: 10 },
 ];
   
 const TrackerPieChart = () => {

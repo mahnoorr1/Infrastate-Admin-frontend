@@ -19,10 +19,10 @@ export const AppRouter = () => {
         <Route path="/Tracker/*" element={<TrackerRoutes/>} />
         <Route path="/Support/*" element={<SupportRoutes/>}/>
         <Route path="/Rules/*" element={<RulesRoutes/>}/>
-        <Route path="/restrictions/*" element={<RestrictionRoutes/>}/>
+        {/* <Route path="/restrictions/*" element={<RestrictionRoutes/>}/> */}
         <Route path="/Users/*" element={<UsersRoutes/>}/>
         <Route path="/Subscriptions/*" element={<SubscriptionRoutes/>}/>
-        <Route path="/Construction" element={<ConstructionRoutes/>}/>
+        <Route path="/construction/*" element={<ConstructionRoutes/>}/>
       </Routes>
     </BrowserRouter>
   );

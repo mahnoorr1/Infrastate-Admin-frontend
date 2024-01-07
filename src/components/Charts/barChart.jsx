@@ -6,7 +6,7 @@ import { axisClasses } from '@mui/x-charts';
 const chartSetting = {
   yAxis: [
     {
-      label: 'monthly stats in percentage',
+      label: 'change in percentage',
     },
   ],
   width: 650,
@@ -20,33 +20,27 @@ const chartSetting = {
 const dataset = [
   {
     trackers: 1,
-    land: 57,
-    change: 86,
+    // land: 57,
+    change: 13,
     zone: 'zone 1',
   },
   {
-    trackers: 50,
-    land: 52,
-    change: 78,
+    trackers: 2,
+    // land: 52,
+    change: 3,
     zone: 'zone 2',
   },
   {
-    trackers: 47,
-    land: 53,
-    change: 100,
+    trackers: 4,
+    // land: 53,
+    change: 5,
     zone: 'zone 3',
   },
   {
-    trackers: 54,
-    land: 56,
-    change: 92,
+    trackers: 3,
+    // land: 56,
+    change: 2,
     zone: 'zone 4',
-  },
-  {
-    trackers: 57,
-    land: 69,
-    change: 92,
-    zone: 'zone 5',
   },
 ];
 
@@ -64,7 +58,6 @@ export default function BarsDataset() {
       series={[
         { dataKey: 'trackers', label: 'Trackers'},
         { dataKey: 'change', label: 'Change', valueFormatter },
-        { dataKey: 'land', label: 'Green Land', valueFormatter },
       ]}
       colors={[ theme.palette.shades.blueLite, theme.palette.shades.greenLite, theme.palette.shades.greenMedium, theme.palette.shades.blueMedium, ]}
       {...chartSetting}

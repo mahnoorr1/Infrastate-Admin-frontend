@@ -53,7 +53,7 @@ const ManageSubscriptions = (props) => {
                 })
             }
         </Card>
-        <Typography sx={{
+        {/* <Typography sx={{
             display: 'flex',
             justifyContent: 'center',
             marginTop: '20px',
@@ -119,7 +119,7 @@ const ManageSubscriptions = (props) => {
                     )
                 })
             }
-        </Card>
+        </Card> */}
     </MainContainer>
 }
 

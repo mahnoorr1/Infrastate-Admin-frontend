@@ -15,19 +15,13 @@ import {MainContainer} from "../../components/Contents/Contents.elements";
 
 const previousTrackers = [
     {
-        location: 'Street 26, G-6/2, G-6, Blue Area, Islamabad Capital Territory, 44010, Pakistan',
+        location: 'G-6, Blue Area',
         lat: 33.709256, 
         lng: 73.082362,
         date: '22/07/2023',
     },
     {
-        location: 'Street 26, G-6/2, G-6, Blue Area, Islamabad Capital Territory, 44010, Pakistan',
-        lat: 33.709256, 
-        lng: 73.082362,
-        date: '22/07/2023',
-    },
-    {
-        location: 'Street 26, G-6/2, G-6, Blue Area, Islamabad Capital Territory, 44010, Pakistan',
+        location: 'G-11/2',
         lat: 33.709256, 
         lng: 73.082362,
         date: '22/07/2023',
@@ -39,7 +33,7 @@ export const TrackerScreen = (props) => {
     const navigate = useNavigate();
     return(
         <MainContainer active = {props.toggle}>
-            <div style={{justifyContent: 'flex-end', display: 'flex', marginRight: '0.5vw'}}>
+            {/* <div style={{justifyContent: 'flex-end', display: 'flex', marginRight: '0.5vw'}}>
                 <HoverZoom>
                     <AppButton 
                         text={'Add Tracker'} 
@@ -49,7 +43,7 @@ export const TrackerScreen = (props) => {
                         variant={'outlined'}
                     ></AppButton>
                 </HoverZoom>
-            </div>
+            </div> */}
             <Paper sx = {{
                 width: '100%',
                 backgroundColor: 'transparent',
@@ -111,7 +105,7 @@ export const TrackerScreen = (props) => {
                                         previousTrackers.map((tracker, index)=>{
                                             return(
                                                 index<=1 ?
-                                                <TrackerImageCard></TrackerImageCard> : null
+                                                <TrackerImageCard title={tracker.location} lat={tracker.lat} lng={tracker.lng} date={tracker.date}></TrackerImageCard> : null
                                             );
                                         })
                                     }

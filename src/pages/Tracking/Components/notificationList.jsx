@@ -8,80 +8,47 @@ import NotificationCard from "../../../components/CustomComponents/notificationI
 const categories = ['All', 'Priority'];
 const notifications = [
     {
-        title: 'Tracker 101 update',
+        title: 'Zone 1 update',
         description: '50% changes found respective to building details',
         date: '10/10/2022',
         alert: 'red',
         state: 'severe',
     },
     {
-        title: 'Tracker 101 update',
+        title: 'Zone 2-2 update',
         description: '10% changes found',
         date: '10/10/2022',
         alert: 'blue',
         state: 'normal',
     },
     {
-        title: 'Tracker 101 update',
+        title: ' Zone 3',
         description: '30% changes found',
         date: '10/10/2022',
         alert: 'green',
         state: 'severe',
     },
     {
-        title: 'Tracker 101 update',
+        title: 'Zone 2_5 update',
         description: '10% changes found',
         date: '10/10/2022',
         alert: 'red',
         state: 'normal',
     },
     {
-        title: 'Tracker 101 update',
+        title: 'G11 update',
         description: '10% changes found',
         date: '10/10/2022',
         state: 'normal',
     },
     {
-        title: 'Tracker 101 update',
+        title: 'G6/2 update',
         description: '50% changes found respective to building details',
         date: '10/10/2022',
         alert: 'red',
         state: 'severe',
     },
-    {
-        title: 'Tracker 101 update',
-        description: '10% changes found',
-        date: '10/10/2022',
-        alert: 'blue',
-        state: 'normal',
-    },
-    {
-        title: 'Tracker 101 update',
-        description: '30% changes found',
-        date: '10/10/2022',
-        alert: 'green',
-        state: 'severe',
-    },
-    {
-        title: 'Tracker 101 update',
-        description: '10% changes found',
-        date: '10/10/2022',
-        alert: 'red',
-        state: 'normal',
-    },
-    {
-        title: 'Tracker 101 update',
-        description: '10% changes found',
-        date: '10/10/2022',
-        state: 'normal',
-    },
-    {
-        title: 'Tracker 101 update',
-        description: '30% changes found',
-        date: '10/10/2022',
-        alert: 'green',
-        state: 'severe',
-    },
+   
 ];
 const NotificationList = () => {
     const [data, setData] = useState(notifications);

@@ -23,42 +23,43 @@ const sidebarData = [
     path: '/',
     icon: CiHome,
   },
+  
+  {
+    title: 'Track Changes',
+    path: '/construction',
+    icon: RiBuilding2Line,
+  },
   {
     title: 'Tracker',
     path: '/tracker',
     icon: BiMapPin,
   },
-  {
-    title: 'Construction',
-    path: '/construction',
-    icon: RiBuilding2Line,
-  },
-  {
-    title: 'Restrictions',
-    path: '/restrictions',
-    icon: MdBlock,
-  },
+  // {
+  //   title: 'Restrictions',
+  //   path: '/restrictions',
+  //   icon: MdBlock,
+  // },
   {
     title: 'Rules',
     path: '/rules',
     icon: SlDoc,
   },
-  {
-    title: 'Manage Users',
-    icon: RiUserSettingsLine,
-    subNav: [
-      {
-        title: 'Users',
-        path: '/users/manageUsers',
-        icon: PiUsers,
-      },
-      {
-        title: 'Admins',
-        path: '/users/manageAdmins',
-        icon: RiAdminLine,
-      },
-    ],
-  },
+  // {
+  //   title: 'Manage Users',
+  //   icon: RiUserSettingsLine,
+  //   subNav: [
+  //     {
+  //       title: 'Users',
+  //       path: '/users/manageUsers',
+  //       icon: PiUsers,
+  //     },
+  //     {
+  //       title: 'Admins',
+  //       path: '/users/manageAdmins',
+  //       icon: RiAdminLine,
+  //     },
+  //   ],
+  // },
   {
     title: 'Subscriptions',
     path: '/subscriptions',
@@ -136,7 +137,8 @@ const Sidebar= (props) => {
                     <span>{item.title}</span>
                   </StyledNavLink>
                 )}
-                {activeSubMenu === index && item.subNav && (
+                {/* {
+                activeSubMenu === index && item.subNav && (
                   // Render subnav links when submenu is open
                   <div style={{ marginLeft: '10px' }}>
                     {item.subNav.map((subItem, subIndex) => (
@@ -152,7 +154,7 @@ const Sidebar= (props) => {
                       </StyledNavLink>
                     ))}
                   </div>
-                )}
+                )} */}
               </div>
             );
           })}

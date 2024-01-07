@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useEffect, useState} from 'react';
 import theme from '../../configs/theme';
 import {MainContainer} from "../../components/Contents/Contents.elements";
 import SubHeadingCard from '../../components/CustomComponents/subheadingCard';
@@ -9,9 +9,35 @@ import AlertsList from './Components/alertsList';
 import StatsCard from './Components/statsCard';
 import { BiMapPin, BiMap } from 'react-icons/bi';
 import { FiAlertTriangle } from 'react-icons/fi';
-
+import { getOutputImages, getOutputJSON } from '../../Firebase/firebaseStorage';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = (props) => {
+    const [imagesData, setImagesData] = useState([]);
+    const [json, setJSON] = useState([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        const fetchImages = async () => {
+          try {
+            const folderPath = 'output/';
+            const imagesData = await getOutputImages(folderPath);
+            const jsonData = await getOutputJSON(folderPath);
+            setImagesData(imagesData);
+            var change = 0
+            for(let i = 0; i<jsonData.length; i++){
+                change += parseInt(Math.round(jsonData.jsonContent && jsonData[i].jsonContent.change_results_ai));
+                console.log(change);
+            }
+            setJSON(change);
+          } catch (error) {
+            console.log("Error fetching images:", error);
+          } finally {
+            setLoading(false); // Set loading to false regardless of success or error
+          }
+        };
+    
+        fetchImages();
+      }, []); 
       return (
         <MainContainer active={props.toggle}>
         {/* First Section */}
@@ -70,17 +96,13 @@ const Dashboard = (props) => {
                             display: 'flex',
                             justifyContent: 'center'
                         }}>
-                            <PercentPieChart percent={100} size={170}></PercentPieChart>
+                            <PercentPieChart percent={50} size={170}></PercentPieChart>
 
                         </Card>
                         <Typography 
                         variant='h6' 
-                        fontWeight={600}>100% Load</Typography>
-                        <Typography 
-                        variant='body2'
-                        color={'grey'}>50/50 Trackers working</Typography>
+                        fontWeight={600}>50% Load</Typography>
                         
-
                     </Card>
                 </Card>
                 <Card sx={{
@@ -107,15 +129,12 @@ const Dashboard = (props) => {
                             display: 'flex',
                             justifyContent: 'center'
                         }}>
-                            <PercentPieChart percent={20} size={170}></PercentPieChart>
+                            <PercentPieChart percent={15} size={170}></PercentPieChart>
 
                         </Card>
                         <Typography 
                         variant='h6' 
-                        fontWeight={600}>20% Change Detected</Typography>
-                        <Typography 
-                        variant='body2'
-                        color={'grey'}>Weekly change in 3 Trackers</Typography>
+                        fontWeight={600}>15% Change Detected</Typography>
 
                     </Card>
                 </Card>
@@ -134,9 +153,9 @@ const Dashboard = (props) => {
                 boxShadow: 'none',
             }}>
                 <StatsCard
-                stat={"20"}
-                subtitle1={"Active Tracker"}
-                subtitle2={"Capacity: 25"}
+                stat={imagesData.length}
+                subtitle1={"Active Tracker Changes"}
+                subtitle2={"Capacity: 20"}
                 icon={<BiMapPin style={{
                     fontSize: '35px',
                     color: theme.palette.shades.greenLite,
@@ -145,9 +164,9 @@ const Dashboard = (props) => {
                 ></StatsCard>
 
                 <StatsCard
-                stat={"105"}
+                stat={imagesData.length}
                 subtitle1={"Trackers Applied"}
-                subtitle2={"Active: 20"}
+                subtitle2={"Active: " + imagesData.length}
                 icon={<BiMap style={{
                     fontSize: '35px',
                     color: theme.palette.shades.greenLite,
@@ -166,11 +185,6 @@ const Dashboard = (props) => {
                 iconBackColor={`${theme.palette.shades.greenMedium}20`}
                 ></StatsCard>
 
-                <StatsCard
-                stat={"NA"}
-                subtitle1={"Not defined"}
-                subtitle2={""}
-                ></StatsCard>
 
             </Card>
             
@@ -184,7 +198,7 @@ const Dashboard = (props) => {
             },
             gridTemplateColumns: {
                 xs: '1fr',
-                md: '0.6499fr 0.0001fr 0.35fr'
+                md: '0.6499fr 0.0001fr 0.35fr',
             },
             gridTemplateRows: {
                 xs: '0.45fr 0fr 0.55fr',
@@ -220,12 +234,6 @@ const Dashboard = (props) => {
             </Card>
           </Card>
 
-        {/* section 3 */}
-        <Card sx={{
-            height: '50vh',
-            width: '100%',
-        }}>
-        </Card>
         </MainContainer>
       );
 }

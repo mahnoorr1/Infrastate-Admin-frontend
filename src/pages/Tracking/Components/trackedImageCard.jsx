@@ -3,7 +3,7 @@ import { Card, Typography } from "@mui/material";
 import HoverZoom from "../../../components/CustomComponents/onhoverZoom";
 import buildingRecognition from '../../../assets/buildingRecognition.png';
 
-const TrackerImageCard = () => {
+const TrackerImageCard = ({title, lng, lat, date}) => {
     return(
         <Card sx={{
             width: '92%',
@@ -51,7 +51,7 @@ const TrackerImageCard = () => {
                 whiteSpace="nowrap" 
                 textOverflow="ellipsis"
                 >
-                    complete location here 
+                    {title}
                 </Typography>
                 <div style={{display: 'flex', flexDirection: 'row', gap: '5px'}}>
                     <Typography 
@@ -59,15 +59,15 @@ const TrackerImageCard = () => {
                     overflow={'hidden'}
                     whiteSpace="nowrap" 
                     textOverflow="ellipsis"
-                    >lng: longitude</Typography>
+                    >lng: {lng}</Typography>
                     <Typography 
                     variant="body1"
                     overflow={'hidden'}
                     whiteSpace="nowrap" 
                     textOverflow="ellipsis"
-                    >lat: latitude</Typography>
+                    >lat: {lat}</Typography>
                 </div>
-                <Typography variant="body2">Date when applied</Typography>
+                <Typography variant="body2">{date}</Typography>
             </Card>
         </Card>
     );

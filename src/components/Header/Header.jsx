@@ -11,7 +11,7 @@ export default function Header(props) {
           props.setToggle((prevState) => !prevState);
         }}
       />
-      <UserIcon></UserIcon>
+      {/* <UserIcon></UserIcon> */}
     </Headerbar>
   );
 }

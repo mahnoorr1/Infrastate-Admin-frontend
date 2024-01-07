@@ -3,6 +3,9 @@ import { Routes, Route } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Sidebar from '../components/Sidebar/Sidebar';
 import ConstructionMainScreen from '../pages/Construction/mainScreen';
+import ManualTracking from '../pages/Construction/manualTracking';
+import TrackerDetailsAndApply from '../pages/Construction/detailsAndApply';
+import AddTrackerOnZoneSegment from '../pages/Construction/addTrackerOnZoneSegment';
 
 export const ConstructionRoutes = () => {
   const [sidebarToggle, setSidebarToggle] = useState(true);
@@ -20,6 +23,9 @@ export const ConstructionRoutes = () => {
             element={<ConstructionMainScreen toggle = {sidebarToggle}/>}
           />
           
+          <Route exact path='/manualTracking' element = {<ManualTracking/>}/>
+          <Route exact path='/trackerDetails' element={<TrackerDetailsAndApply/>}/>
+          <Route path="/trackerDetails/addTracker" element={<AddTrackerOnZoneSegment/>}/>
         </Routes>
       </div>
   );
